@@ -3,6 +3,7 @@
 var path = require('path');
 var jetpack = require('fs-jetpack');
 var rollup = require('rollup').rollup;
+var babel = require('rollup-plugin-babel')
 
 var nodeBuiltInModules = ['assert', 'buffer', 'child_process', 'cluster',
     'console', 'constants', 'crypto', 'dgram', 'dns', 'domain', 'events',
@@ -31,7 +32,9 @@ module.exports = function (src, dest, opts) {
         entry: src,
         external: generateExternalModulesList(),
         cache: cached[src],
-        plugins: opts.rollupPlugins,
+        plugins: [babel({
+          exclude: 'node_modules/**'
+        })]
     })
     .then(function (bundle) {
         cached[src] = bundle;

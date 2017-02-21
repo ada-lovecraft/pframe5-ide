@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8">
     <title>Electron Boilerplate</title>
-    <script>
-window.nodeRequire = require;
-delete window.require;
-delete window.exports;
-delete window.module;
-</script>
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
     <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-dark-theme.css" />
+
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <!--Library-->
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <!--Hack to fix library not defined (pt. 2)-->
+    <script> if (window.module) module = window.module;</script>
+    <script>
+      window.ReactDOM = require('react-dom')
+      window.React = require('react')
+    </script>
+    <link type="text/css" rel="stylesheet" href="stylesheets/main.css" />
+
 </head>
 <body>
   <div id="#workspace">
