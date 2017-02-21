@@ -1,0 +1,66 @@
+// Here is the starting point for your application code.
+// All stuff below is just to show you how it works. You can delete all of it.
+
+// Use new ES6 modules syntax for everything.
+import GoldenLayout from 'golden-layout'
+import EditorPframe from './components/EditorPframe'
+import CommandPframe from './components/CommandPframe'
+import PreviewPframe from './components/PreviewPframe'
+import DebugPframe from './components/DebugPframe'
+import Debugger from './components/Debug'
+
+import debug from 'debug'
+const log = debug('app:log')
+
+const PROJECT_DIRECTORY ='/Users/ada/github/pframe5-demo'
+global.PROJECT_DIRECTORY = PROJECT_DIRECTORY
+
+
+var config = {
+    content: [{
+        type: 'row',
+        content:[{
+            type: 'react-component',
+            component: 'editorComponent',
+            props: { file: `${PROJECT_DIRECTORY}/sketch.js` }
+        },{
+            type: 'column',
+
+            content:[{
+              type: 'react-component',
+              component: 'previewComponent',
+              title: 'Live Preview',
+              props: { }
+            },
+            {
+              type: 'react-component',
+              component: 'debugComponent',
+              tile: 'Debugger',
+              props: { }
+            }
+          ]
+          }]
+    }]
+};
+
+
+let gl;
+
+gl = new GoldenLayout(config)
+
+gl.registerComponent('editorComponent', EditorPframe)
+gl.registerComponent('previewComponent', PreviewPframe)
+gl.registerComponent('debugComponent', DebugPframe)
+//gl.registerComponent('fileTreeComponent', FileTree)
+gl.registerComponent( 'testComponent', function( container, componentState ){
+    container.getElement().html( '<h2>' + componentState.label + '</h2>' );
+});
+
+gl.init()
+document.addEventListener('keypress', evt => {
+  log(evt)
+})
+
+window.refreshPreview = () => gl.eventHub.emit('preview:refresh')
+window.saveFile = () => gl.eventHub.emit('editor:save-active-file')
+//ReactDOM.render(<CommandPframe glEventHub={gl.eventHub}/>, document.getElementById('command-pframe'))

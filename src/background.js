@@ -9,6 +9,8 @@ import { app, Menu } from 'electron';
 import { devMenuTemplate } from './menu/dev_menu_template';
 import { editMenuTemplate } from './menu/edit_menu_template';
 import createWindow from './helpers/window';
+import express from 'express'
+
 
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
@@ -54,3 +56,32 @@ app.on('ready', function () {
 app.on('window-all-closed', function () {
     app.quit();
 });
+
+let baseServerPath = '.'
+let server = null
+let serverPort = 8139;
+app.startServer = function(baseDir) {
+  return Promise((resolve, reject) => {
+    const log = debug('StaticServer:log')
+    if(server == null) {
+      log('trying to start static server')
+      try {
+        baseServerPath = baseDir
+        server = express();
+        server.use(express.static(baseServerPath))
+        server.listen(serverPort, () => {
+          log(' started:', serverPort, baseServerPath)
+          resolve({port: serverPort, baseDir: baseServerPath})
+        });
+      } catch(err) {
+        reject(err)
+      }
+    } else {
+      resolve({port: serverPort, baseDir: baseServerPath})
+    }
+  });
+}
+
+app.stopServer = function() {
+  log('no need to stop the server...')
+}

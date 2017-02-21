@@ -1,0 +1,115 @@
+.CodeMirror {
+  background-color: @syntax-background-color !important;
+  color: @syntax-text-color !important;
+  font-size: 14px;
+  font-weight: 100 !important;
+  cursor: text;
+}
+
+.CodeMirror * {
+  font-family: @ui-editor-font !important;
+}
+
+.CodeMirror pre {
+  line-height: 20px !important;
+}
+
+.CodeMirror-gutters {
+  background: @syntax-gutter-background-color !important;
+  color: @syntax-gutter-text-color !important;
+  padding-right: 10px;
+  border: none;
+  border-right: 1px solid @syntax-gutter-border-color;
+
+}
+
+.CodeMirror-guttermarker, .CodeMirror-guttermarker-subtle, .CodeMirror-linenumber {
+  color: @syntax-gutter-text-color-subtle !important;
+}
+
+.CodeMirror-cursor {
+  border-left: 1px solid @syntax-cursor-color !important;
+}
+
+div.CodeMirror-selected {
+  background: @syntax-selection-color !important;
+}
+
+.CodeMirror-focused div.CodeMirror-selected {
+  background: @syntax-selection-color !important;
+}
+
+.CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection {
+  background: @syntax-selection-color !important;
+}
+
+.CodeMirror-activeline-background {
+  background: @syntax-cursor-line !important;
+}
+
+.cm-keyword {
+  color: @syntax-color-keyword !important;
+}
+
+.cm-operator {
+  color: @syntax-color-operator !important;
+}
+
+.cm-variable-2 {
+  color: @syntax-color-variable !important;
+}
+
+.cm-variable-3 {
+  color: @syntax-color-variable !important;
+}
+
+
+
+.cm-number {
+  color: @syntax-color-numeric !important;
+}
+
+.cm-def {
+  color: @syntax-color-function !important;
+}
+
+.cm-string {
+  color: @syntax-color-string !important;
+}
+
+.cm-string-2 {
+  color: @syntax-color-string !important;
+}
+
+.cm-comment {
+  color: @syntax-color-comment !important;
+}
+
+.cm-variable {
+  color: @syntax-color-variable !important;
+}
+
+.cm-tag {
+  color: @syntax-color-tag !important;
+}
+
+.cm-attribute {
+  color: @syntax-color-attribute !important;
+}
+
+.cm-property {
+  color: @syntax-color-property !important;
+}
+
+
+
+.cm-error {
+  color: @syntax-color-removed !important;
+  background-color: @syntax-background-color !important;
+}
+
+.CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: @syntax-bracket-matcher-color !important;
+  font-weight: bold;
+}

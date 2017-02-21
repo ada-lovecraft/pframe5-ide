@@ -1,2 +1,22 @@
-@import "codemirror.css";
-@import "tomorrow-night-eighties.css";
+@import (inline) "~codemirror/lib/codemirror.css";
+@import (inline) "~golden-layout/src/css/goldenlayout-base.css";
+@import (inline) "~golden-layout/src/css/goldenlayout-dark-theme.css";
+
+@import "./nord.less";
+@import "./variables.less";
+@import "./codemirror-theme.less";
+//@import "./ui-theme.less"
+@import "./CommandPframe.less";
+@import "./PreviewPframe.less";
+
+* {
+  font-family: @ui-font;
+  font-weight: 100;
+}
+
+.ReactCodeMirror {
+  height: 100%;
+}
+.CodeMirror {
+  height: 100%;
+}

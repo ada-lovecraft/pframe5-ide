@@ -10,6 +10,7 @@
     "stage-0"
   ],
   "plugins": [
-    "external-helpers"
+    "external-helpers",
+    "transform-decorators-legacy"
   ]
 }
