@@ -10,6 +10,7 @@ var debug = _interopDefault(require('debug'));
 var jetpack = _interopDefault(require('fs-jetpack'));
 var fuzzaldrin = require('fuzzaldrin');
 var electron = require('electron');
+var Webview = _interopDefault(require('react-electron-web-view'));
 var express = _interopDefault(require('express'));
 var ReactDOM = _interopDefault(require('react-dom'));
 
@@ -432,9 +433,21 @@ var PreviewPframe = function (_Component) {
       this.props.glContainer.setTitle('Live Preview');
     }
   }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      this.frame.view.addEventListener('console-message', function (e) {
+        console.log('sketch:', JSON.parse(e.message), e);
+      });
+      this.frame.view.addEventListener('dom-ready', function () {
+        _this3.frame.view.openDevTools();
+      });
+    }
+  }, {
     key: 'refresh',
     value: function refresh() {
-      this.frame.reload();
+      this.frame.view.reload();
     }
   }, {
     key: 'componentWillUnmount',
@@ -444,15 +457,19 @@ var PreviewPframe = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var src = 'http://localhost:' + this.port;
       return React$1__default.createElement(
         'div',
         { className: 'preview-pframe' },
-        React$1__default.createElement('webview', { src: src, ref: function ref(frame) {
-            return _this3.frame = frame;
-          }
+        React$1__default.createElement(Webview, { src: src,
+          ref: function ref(frame) {
+            return _this4.frame = frame;
+          },
+          preload: '../src/shims/console.shim.js',
+          nodeintegration: true,
+          disablewebsecurity: true
         })
       );
     }
