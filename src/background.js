@@ -5,15 +5,17 @@
 
 import path from 'path';
 import url from 'url';
-import { app, Menu } from 'electron';
+import { app, Menu} from 'electron';
 import { devMenuTemplate } from './menu/dev_menu_template';
 import { editMenuTemplate } from './menu/edit_menu_template';
 import createWindow from './helpers/window';
 import express from 'express'
-import keymap from '../data/keycommands.js'
+import keymap from '../data/keymap.js'
 import {ipcMain as ipc} from 'electron'
-import shortcut from 'electron-localshortcut'
-
+import electronLocalshortcut from 'electron-localshortcut'
+import debug from 'debug'
+import capitalize from 'lodash.capitalize'
+const log = debug('main:log')
 
 
 // Special module holding environment variables which you declared
@@ -30,6 +32,25 @@ var setApplicationMenu = function () {
     Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
 
+var sendKeyCommand = function(cmd) {
+  log('sending command:', cmd)
+  mainWindow.webContents.send('command', cmd)
+}
+
+var registerKeycommands = () => {
+  keymap.forEach(keycmd => {
+    if(keycmd.enabled) {
+      log('registering:', keycmd.keys, keycmd.keys)
+      const ret = electronLocalshortcut.register(mainWindow, keycmd.keys, () => { sendKeyCommand(keycmd.cmd)})
+      if (!ret) {
+        console.log('registration failed')
+      }
+      // Check whether a shortcut is registered.
+      log(electronLocalshortcut.isRegistered(keycmd.keys))
+    }
+  })
+}
+
 // Save userData in separate folders for each environment.
 // Thanks to this you can use production and development versions of the app
 // on same machine like those are two separate apps.
@@ -38,10 +59,12 @@ if (env.name !== 'production') {
     app.setPath('userData', userDataPath + ' (' + env.name + ')');
 }
 
-app.on('ready', function () {
+
+
+app.on('ready', () => {
     setApplicationMenu();
 
-    var mainWindow = createWindow('main', {
+    mainWindow = createWindow('main', {
         width: 1000,
         height: 600
     });
@@ -56,7 +79,11 @@ app.on('ready', function () {
       mainWindow.openDevTools()
     }
 
-    registerKeycommands.call(this)
+    log('app ready')
+
+    registerKeycommands()
+
+
 });
 
 app.on('window-all-closed', function () {
@@ -87,20 +114,11 @@ app.startServer = function(baseDir) {
     }
   });
 }
+app.on('will-quit', () => {
+  // Unregister all shortcuts.
+  electronLocalshortcut.unregisterAll()
+})
 
 app.stopServer = function() {
   log('no need to stop the server...')
-}
-
-const sendKeyCommand = cmd => {
-  log('sending command:', cmd)
-  ipc.send('keycommand', cmd)
-}
-
-const registerKeycommands = () => {
-  keymap.forEach(keycmd => {
-    shortcut(keycmd.keystrokes,() => {
-      sendKeyCommand(keycmd.command)
-    })
-  })
 }

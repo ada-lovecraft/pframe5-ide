@@ -1,4 +1,4 @@
-export default keymap = [
+const keymap = [
   {
     "keystrokes": "home",
     "command": "editor:move-to-first-character-of-line"
@@ -8,15 +8,15 @@ export default keymap = [
     "command": "editor:move-to-end-of-screen-line"
   },
   {
-    "keystrokes": "shift-home",
+    "keystrokes": "Shift-home",
     "command": "editor:select-to-first-character-of-line"
   },
   {
-    "keystrokes": "shift-end",
+    "keystrokes": "Shift-end",
     "command": "editor:select-to-end-of-line"
   },
   {
-    "keystrokes": "ctrl-shift-C",
+    "keystrokes": "ctrl-Shift-C",
     "command": "editor:copy-path"
   },
   {
@@ -28,11 +28,11 @@ export default keymap = [
     "command": "editor:newline"
   },
   {
-    "keystrokes": "shift-tab",
+    "keystrokes": "Shift-tab",
     "command": "editor:outdent-selected-rows"
   },
   {
-    "keystrokes": "ctrl-shift-K",
+    "keystrokes": "ctrl-Shift-K",
     "command": "editor:delete-line"
   },
   {
@@ -52,28 +52,28 @@ export default keymap = [
     "command": "core:focus-next"
   },
   {
-    "keystrokes": "shift-tab",
+    "keystrokes": "Shift-tab",
     "command": "core:focus-previous"
   },
   {
-    "keystrokes": "cmd-q",
+    "keystrokes": "CommandOrControl-q",
     "command": "application:quit"
   },
   {
-    "keystrokes": "cmd-h",
+    "keystrokes": "CommandOrControl-h",
     "command": "application:hide"
   },
   {
-    "keystrokes": "alt-cmd-h",
+    "keystrokes": "alt-CommandOrControl-h",
     "command": "application:hide-other-applications"
   },
   {
-    "keystrokes": "cmd-m",
+    "keystrokes": "CommandOrControl-m",
     "command": "application:minimize"
   },
   {
-    "keystrokes": "ctrl-alt-cmd-m",
-    "command": "application:zoom"
+    "keystrokes": "ctrl-alt-CommandOrControl-m",
+  "command": "application:zoom"
   },
   {
     "keystrokes": "ctrl-p",
@@ -92,19 +92,19 @@ export default keymap = [
     "command": "core:move-right"
   },
   {
-    "keystrokes": "ctrl-shift-P",
+    "keystrokes": "ctrl-Shift-P",
     "command": "core:select-up"
   },
   {
-    "keystrokes": "ctrl-shift-N",
+    "keystrokes": "ctrl-Shift-N",
     "command": "core:select-down"
   },
   {
-    "keystrokes": "ctrl-shift-F",
+    "keystrokes": "ctrl-Shift-F",
     "command": "core:select-right"
   },
   {
-    "keystrokes": "ctrl-shift-B",
+    "keystrokes": "ctrl-Shift-B",
     "command": "core:select-left"
   },
   {
@@ -148,119 +148,119 @@ export default keymap = [
     "command": "core:move-right"
   },
   {
-    "keystrokes": "ctrl-alt-cmd-l",
+    "keystrokes": "ctrl-alt-CommandOrControl-l",
     "command": "window:reload"
   },
   {
-    "keystrokes": "alt-cmd-i",
+    "keystrokes": "alt-CommandOrControl-i",
     "command": "window:toggle-dev-tools"
   },
   {
-    "keystrokes": "ctrl-alt-cmd-p",
+    "keystrokes": "ctrl-alt-CommandOrControl-p",
     "command": "window:run-package-specs"
   },
   {
-    "keystrokes": "ctrl-shift-left",
+    "keystrokes": "ctrl-Shift-left",
     "command": "pane:move-item-left"
   },
   {
-    "keystrokes": "ctrl-shift-right",
+    "keystrokes": "ctrl-Shift-right",
     "command": "pane:move-item-right"
   },
   {
-    "keystrokes": "cmd-,",
+    "keystrokes": "CommandOrControl-,",
     "command": "application:show-settings"
   },
   {
-    "keystrokes": "shift-cmd-N",
+    "keystrokes": "Shift-CommandOrControl-N",
     "command": "application:new-window"
   },
   {
-    "keystrokes": "shift-cmd-W",
+    "keystrokes": "Shift-CommandOrControl-W",
     "command": "window:close"
   },
   {
-    "keystrokes": "cmd-o",
+    "keystrokes": "CommandOrControl-o",
     "command": "application:open"
   },
   {
-    "keystrokes": "shift-cmd-O",
+    "keystrokes": "Shift-CommandOrControl-O",
     "command": "application:add-project-folder"
   },
   {
-    "keystrokes": "shift-cmd-T",
+    "keystrokes": "Shift-CommandOrControl-T",
     "command": "pane:reopen-closed-item"
   },
   {
-    "keystrokes": "cmd-n",
+    "keystrokes": "CommandOrControl-n",
     "command": "application:new-file"
   },
   {
-    "keystrokes": "cmd-s",
+    "keystrokes": "CommandOrControl-s",
     "command": "core:save"
   },
   {
-    "keystrokes": "shift-cmd-S",
+    "keystrokes": "Shift-CommandOrControl-S",
     "command": "core:save-as"
   },
   {
-    "keystrokes": "alt-cmd-s",
+    "keystrokes": "alt-CommandOrControl-s",
     "command": "window:save-all"
   },
   {
-    "keystrokes": "cmd-w",
+    "keystrokes": "CommandOrControl-w",
     "command": "core:close"
   },
   {
-    "keystrokes": "ctrl-cmd-f",
+    "keystrokes": "ctrl-CommandOrControl-f",
     "command": "window:toggle-full-screen"
   },
   {
-    "keystrokes": "cmd-z",
+    "keystrokes": "CommandOrControl-z",
     "command": "core:undo"
   },
   {
-    "keystrokes": "shift-cmd-Z",
+    "keystrokes": "Shift-CommandOrControl-Z",
     "command": "core:redo"
   },
   {
-    "keystrokes": "cmd-y",
+    "keystrokes": "CommandOrControl-y",
     "command": "core:redo"
   },
   {
-    "keystrokes": "cmd-x",
+    "keystrokes": "CommandOrControl-x",
     "command": "core:cut"
   },
   {
-    "keystrokes": "cmd-c",
+    "keystrokes": "CommandOrControl-c",
     "command": "core:copy"
   },
   {
-    "keystrokes": "cmd-v",
+    "keystrokes": "CommandOrControl-v",
     "command": "core:paste"
   },
   {
-    "keystrokes": "shift-up",
+    "keystrokes": "Shift-up",
     "command": "core:select-up"
   },
   {
-    "keystrokes": "shift-down",
+    "keystrokes": "Shift-down",
     "command": "core:select-down"
   },
   {
-    "keystrokes": "shift-left",
+    "keystrokes": "Shift-left",
     "command": "core:select-left"
   },
   {
-    "keystrokes": "shift-right",
+    "keystrokes": "Shift-right",
     "command": "core:select-right"
   },
   {
-    "keystrokes": "shift-pageup",
+    "keystrokes": "Shift-pageup",
     "command": "core:select-page-up"
   },
   {
-    "keystrokes": "shift-pagedown",
+    "keystrokes": "Shift-pagedown",
     "command": "core:select-page-down"
   },
   {
@@ -268,7 +268,7 @@ export default keymap = [
     "command": "core:delete"
   },
   {
-    "keystrokes": "shift-delete",
+    "keystrokes": "Shift-delete",
     "command": "core:delete"
   },
   {
@@ -284,39 +284,39 @@ export default keymap = [
     "command": "core:backspace"
   },
   {
-    "keystrokes": "shift-backspace",
+    "keystrokes": "Shift-backspace",
     "command": "core:backspace"
   },
   {
-    "keystrokes": "cmd-up",
+    "keystrokes": "CommandOrControl-up",
     "command": "core:move-to-top"
   },
   {
-    "keystrokes": "cmd-down",
+    "keystrokes": "CommandOrControl-down",
     "command": "core:move-to-bottom"
   },
   {
-    "keystrokes": "shift-cmd-up",
+    "keystrokes": "Shift-CommandOrControl-up",
     "command": "core:select-to-top"
   },
   {
-    "keystrokes": "shift-cmd-down",
+    "keystrokes": "Shift-CommandOrControl-down",
     "command": "core:select-to-bottom"
   },
   {
-    "keystrokes": "cmd-{",
+    "keystrokes": "CommandOrControl-{",
     "command": "pane:show-previous-item"
   },
   {
-    "keystrokes": "cmd-}",
+    "keystrokes": "CommandOrControl-}",
     "command": "pane:show-next-item"
   },
   {
-    "keystrokes": "alt-cmd-left",
+    "keystrokes": "alt-CommandOrControl-left",
     "command": "pane:show-previous-item"
   },
   {
-    "keystrokes": "alt-cmd-right",
+    "keystrokes": "alt-CommandOrControl-right",
     "command": "pane:show-next-item"
   },
   {
@@ -336,115 +336,115 @@ export default keymap = [
     "command": "pane:move-active-item-to-top-of-stack"
   },
   {
-    "keystrokes": "ctrl-shift-tab",
+    "keystrokes": "ctrl-Shift-tab",
     "command": "pane:show-previous-recently-used-item"
   },
   {
-    "keystrokes": "ctrl-shift-tab ^ctrl",
+    "keystrokes": "ctrl-Shift-tab ^ctrl",
     "command": "pane:move-active-item-to-top-of-stack"
   },
   {
-    "keystrokes": "cmd-=",
+    "keystrokes": "CommandOrControl-=",
     "command": "window:increase-font-size"
   },
   {
-    "keystrokes": "cmd-+",
+    "keystrokes": "CommandOrControl-+",
     "command": "window:increase-font-size"
   },
   {
-    "keystrokes": "cmd--",
+    "keystrokes": "CommandOrControl--",
     "command": "window:decrease-font-size"
   },
   {
-    "keystrokes": "cmd-_",
+    "keystrokes": "CommandOrControl-_",
     "command": "window:decrease-font-size"
   },
   {
-    "keystrokes": "cmd-0",
+    "keystrokes": "CommandOrControl-0",
     "command": "window:reset-font-size"
   },
   {
-    "keystrokes": "cmd-k up",
+    "keystrokes": "CommandOrControl-k up",
     "command": "pane:split-up-and-copy-active-item"
   },
   {
-    "keystrokes": "cmd-k down",
+    "keystrokes": "CommandOrControl-k down",
     "command": "pane:split-down-and-copy-active-item"
   },
   {
-    "keystrokes": "cmd-k left",
+    "keystrokes": "CommandOrControl-k left",
     "command": "pane:split-left-and-copy-active-item"
   },
   {
-    "keystrokes": "cmd-k right",
+    "keystrokes": "CommandOrControl-k right",
     "command": "pane:split-right-and-copy-active-item"
   },
   {
-    "keystrokes": "cmd-k cmd-w",
+    "keystrokes": "CommandOrControl-k CommandOrControl-w",
     "command": "pane:close"
   },
   {
-    "keystrokes": "cmd-k alt-cmd-w",
+    "keystrokes": "CommandOrControl-k alt-CommandOrControl-w",
     "command": "pane:close-other-items"
   },
   {
-    "keystrokes": "cmd-k cmd-p",
+    "keystrokes": "CommandOrControl-k CommandOrControl-p",
     "command": "window:focus-previous-pane"
   },
   {
-    "keystrokes": "cmd-k cmd-n",
+    "keystrokes": "CommandOrControl-k CommandOrControl-n",
     "command": "window:focus-next-pane"
   },
   {
-    "keystrokes": "cmd-k cmd-up",
+    "keystrokes": "CommandOrControl-k CommandOrControl-up",
     "command": "window:focus-pane-above"
   },
   {
-    "keystrokes": "cmd-k cmd-down",
+    "keystrokes": "CommandOrControl-k CommandOrControl-down",
     "command": "window:focus-pane-below"
   },
   {
-    "keystrokes": "cmd-k cmd-left",
+    "keystrokes": "CommandOrControl-k CommandOrControl-left",
     "command": "window:focus-pane-on-left"
   },
   {
-    "keystrokes": "cmd-k cmd-right",
+    "keystrokes": "CommandOrControl-k CommandOrControl-right",
     "command": "window:focus-pane-on-right"
   },
   {
-    "keystrokes": "cmd-1",
+    "keystrokes": "CommandOrControl-1",
     "command": "pane:show-item-1"
   },
   {
-    "keystrokes": "cmd-2",
+    "keystrokes": "CommandOrControl-2",
     "command": "pane:show-item-2"
   },
   {
-    "keystrokes": "cmd-3",
+    "keystrokes": "CommandOrControl-3",
     "command": "pane:show-item-3"
   },
   {
-    "keystrokes": "cmd-4",
+    "keystrokes": "CommandOrControl-4",
     "command": "pane:show-item-4"
   },
   {
-    "keystrokes": "cmd-5",
+    "keystrokes": "CommandOrControl-5",
     "command": "pane:show-item-5"
   },
   {
-    "keystrokes": "cmd-6",
+    "keystrokes": "CommandOrControl-6",
     "command": "pane:show-item-6"
   },
   {
-    "keystrokes": "cmd-7",
+    "keystrokes": "CommandOrControl-7",
     "command": "pane:show-item-7"
   },
   {
-    "keystrokes": "cmd-8",
+    "keystrokes": "CommandOrControl-8",
     "command": "pane:show-item-8"
   },
   {
-    "keystrokes": "cmd-9",
+    "keystrokes": "CommandOrControl-9",
     "command": "pane:show-item-9"
   },
   {
@@ -456,47 +456,47 @@ export default keymap = [
     "command": "editor:move-to-end-of-word"
   },
   {
-    "keystrokes": "alt-shift-left",
+    "keystrokes": "alt-Shift-left",
     "command": "editor:select-to-beginning-of-word"
   },
   {
-    "keystrokes": "alt-shift-right",
+    "keystrokes": "alt-Shift-right",
     "command": "editor:select-to-end-of-word"
   },
   {
-    "keystrokes": "cmd-backspace",
+    "keystrokes": "CommandOrControl-backspace",
     "command": "editor:delete-to-beginning-of-line"
   },
   {
-    "keystrokes": "shift-cmd-backspace",
+    "keystrokes": "Shift-CommandOrControl-backspace",
     "command": "editor:delete-to-beginning-of-line"
   },
   {
-    "keystrokes": "cmd-delete",
+    "keystrokes": "CommandOrControl-delete",
     "command": "editor:delete-to-end-of-line"
   },
   {
-    "keystrokes": "ctrl-shift-A",
+    "keystrokes": "ctrl-Shift-A",
     "command": "editor:select-to-first-character-of-line"
   },
   {
-    "keystrokes": "ctrl-shift-E",
+    "keystrokes": "ctrl-Shift-E",
     "command": "editor:select-to-end-of-line"
   },
   {
-    "keystrokes": "cmd-left",
+    "keystrokes": "CommandOrControl-left",
     "command": "editor:move-to-first-character-of-line"
   },
   {
-    "keystrokes": "cmd-right",
+    "keystrokes": "CommandOrControl-right",
     "command": "editor:move-to-end-of-screen-line"
   },
   {
-    "keystrokes": "shift-cmd-left",
+    "keystrokes": "Shift-CommandOrControl-left",
     "command": "editor:select-to-first-character-of-line"
   },
   {
-    "keystrokes": "shift-cmd-right",
+    "keystrokes": "Shift-CommandOrControl-right",
     "command": "editor:select-to-end-of-line"
   },
   {
@@ -520,15 +520,15 @@ export default keymap = [
     "command": "editor:cut-to-end-of-line"
   },
   {
-    "keystrokes": "ctrl-shift-W",
+    "keystrokes": "ctrl-Shift-W",
     "command": "editor:select-word"
   },
   {
-    "keystrokes": "ctrl-cmd-left",
+    "keystrokes": "ctrl-CommandOrControl-left",
     "command": "editor:move-selection-left"
   },
   {
-    "keystrokes": "ctrl-cmd-right",
+    "keystrokes": "ctrl-CommandOrControl-right",
     "command": "editor:move-selection-right"
   },
   {
@@ -540,11 +540,11 @@ export default keymap = [
     "command": "editor:move-to-next-subword-boundary"
   },
   {
-    "keystrokes": "alt-shift-F",
+    "keystrokes": "alt-Shift-F",
     "command": "editor:select-to-end-of-word"
   },
   {
-    "keystrokes": "ctrl-alt-shift-F",
+    "keystrokes": "ctrl-alt-Shift-F",
     "command": "editor:select-to-next-subword-boundary"
   },
   {
@@ -556,11 +556,11 @@ export default keymap = [
     "command": "editor:move-to-previous-subword-boundary"
   },
   {
-    "keystrokes": "alt-shift-B",
+    "keystrokes": "alt-Shift-B",
     "command": "editor:select-to-beginning-of-word"
   },
   {
-    "keystrokes": "ctrl-alt-shift-B",
+    "keystrokes": "ctrl-alt-Shift-B",
     "command": "editor:select-to-previous-subword-boundary"
   },
   {
@@ -580,23 +580,23 @@ export default keymap = [
     "command": "editor:delete-to-end-of-subword"
   },
   {
-    "keystrokes": "cmd-a",
+    "keystrokes": "CommandOrControl-a",
     "command": "core:select-all"
   },
   {
-    "keystrokes": "alt-cmd-p",
+    "keystrokes": "alt-CommandOrControl-p",
     "command": "editor:log-cursor-scope"
   },
   {
-    "keystrokes": "cmd-k cmd-u",
+    "keystrokes": "CommandOrControl-k CommandOrControl-u",
     "command": "editor:upper-case"
   },
   {
-    "keystrokes": "cmd-k cmd-l",
+    "keystrokes": "CommandOrControl-k CommandOrControl-l",
     "command": "editor:lower-case"
   },
   {
-    "keystrokes": "cmd-l",
+    "keystrokes": "CommandOrControl-l",
     "command": "editor:select-line"
   },
   {
@@ -612,11 +612,11 @@ export default keymap = [
     "command": "editor:move-to-next-subword-boundary"
   },
   {
-    "keystrokes": "ctrl-alt-shift-left",
+    "keystrokes": "ctrl-alt-Shift-left",
     "command": "editor:select-to-previous-subword-boundary"
   },
   {
-    "keystrokes": "ctrl-alt-shift-right",
+    "keystrokes": "ctrl-alt-Shift-right",
     "command": "editor:select-to-next-subword-boundary"
   },
   {
@@ -628,23 +628,23 @@ export default keymap = [
     "command": "editor:delete-to-end-of-subword"
   },
   {
-    "keystrokes": "alt-cmd-z",
+    "keystrokes": "alt-CommandOrControl-z",
     "command": "editor:checkout-head-revision"
   },
   {
-    "keystrokes": "cmd-<",
+    "keystrokes": "CommandOrControl-<",
     "command": "editor:scroll-to-cursor"
   },
   {
-    "keystrokes": "ctrl-alt-cmd-f",
+    "keystrokes": "ctrl-alt-CommandOrControl-f",
     "command": "editor:fold-selection"
   },
   {
-    "keystrokes": "cmd-enter",
+    "keystrokes": "CommandOrControl-enter",
     "command": "editor:newline-below"
   },
   {
-    "keystrokes": "shift-cmd-enter",
+    "keystrokes": "Shift-CommandOrControl-enter",
     "command": "editor:newline-above"
   },
   {
@@ -652,115 +652,115 @@ export default keymap = [
     "command": "editor:newline"
   },
   {
-    "keystrokes": "shift-enter",
+    "keystrokes": "Shift-enter",
     "command": "editor:newline"
   },
   {
-    "keystrokes": "cmd-]",
+    "keystrokes": "CommandOrControl-]",
     "command": "editor:indent-selected-rows"
   },
   {
-    "keystrokes": "cmd-[",
+    "keystrokes": "CommandOrControl-[",
     "command": "editor:outdent-selected-rows"
   },
   {
-    "keystrokes": "ctrl-cmd-up",
+    "keystrokes": "ctrl-CommandOrControl-up",
     "command": "editor:move-line-up"
   },
   {
-    "keystrokes": "ctrl-cmd-down",
+    "keystrokes": "ctrl-CommandOrControl-down",
     "command": "editor:move-line-down"
   },
   {
-    "keystrokes": "cmd-/",
+    "keystrokes": "CommandOrControl-/",
     "command": "editor:toggle-line-comments"
   },
   {
-    "keystrokes": "cmd-j",
+    "keystrokes": "CommandOrControl-j",
     "command": "editor:join-lines"
   },
   {
-    "keystrokes": "shift-cmd-D",
+    "keystrokes": "Shift-CommandOrControl-D",
     "command": "editor:duplicate-lines"
   },
   {
-    "keystrokes": "shift-cmd-L",
+    "keystrokes": "Shift-CommandOrControl-L",
     "command": "editor:split-selections-into-lines"
   },
   {
-    "keystrokes": "ctrl-shift-up",
+    "keystrokes": "ctrl-Shift-up",
     "command": "editor:add-selection-above"
   },
   {
-    "keystrokes": "ctrl-shift-down",
+    "keystrokes": "ctrl-Shift-down",
     "command": "editor:add-selection-below"
   },
   {
-    "keystrokes": "alt-cmd-[",
+    "keystrokes": "alt-CommandOrControl-[",
     "command": "editor:fold-current-row"
   },
   {
-    "keystrokes": "alt-cmd-]",
+    "keystrokes": "alt-CommandOrControl-]",
     "command": "editor:unfold-current-row"
   },
   {
-    "keystrokes": "alt-cmd-{",
+    "keystrokes": "alt-CommandOrControl-{",
     "command": "editor:fold-all"
   },
   {
-    "keystrokes": "alt-cmd-}",
+    "keystrokes": "alt-CommandOrControl-}",
     "command": "editor:unfold-all"
   },
   {
-    "keystrokes": "cmd-k cmd-0",
+    "keystrokes": "CommandOrControl-k CommandOrControl-0",
     "command": "editor:unfold-all"
   },
   {
-    "keystrokes": "cmd-k cmd-1",
+    "keystrokes": "CommandOrControl-k CommandOrControl-1",
     "command": "editor:fold-at-indent-level-1"
   },
   {
-    "keystrokes": "cmd-k cmd-2",
+    "keystrokes": "CommandOrControl-k CommandOrControl-2",
     "command": "editor:fold-at-indent-level-2"
   },
   {
-    "keystrokes": "cmd-k cmd-3",
+    "keystrokes": "CommandOrControl-k CommandOrControl-3",
     "command": "editor:fold-at-indent-level-3"
   },
   {
-    "keystrokes": "cmd-k cmd-4",
+    "keystrokes": "CommandOrControl-k CommandOrControl-4",
     "command": "editor:fold-at-indent-level-4"
   },
   {
-    "keystrokes": "cmd-k cmd-5",
+    "keystrokes": "CommandOrControl-k CommandOrControl-5",
     "command": "editor:fold-at-indent-level-5"
   },
   {
-    "keystrokes": "cmd-k cmd-6",
+    "keystrokes": "CommandOrControl-k CommandOrControl-6",
     "command": "editor:fold-at-indent-level-6"
   },
   {
-    "keystrokes": "cmd-k cmd-7",
+    "keystrokes": "CommandOrControl-k CommandOrControl-7",
     "command": "editor:fold-at-indent-level-7"
   },
   {
-    "keystrokes": "cmd-k cmd-8",
+    "keystrokes": "CommandOrControl-k CommandOrControl-8",
     "command": "editor:fold-at-indent-level-8"
   },
   {
-    "keystrokes": "cmd-k cmd-9",
+    "keystrokes": "CommandOrControl-k CommandOrControl-9",
     "command": "editor:fold-at-indent-level-9"
   },
   {
-    "keystrokes": "alt-cmd-=",
+    "keystrokes": "alt-CommandOrControl-=",
     "command": "pane:increase-size"
   },
   {
-    "keystrokes": "alt-cmd--",
+    "keystrokes": "alt-CommandOrControl--",
     "command": "pane:decrease-size"
   },
   {
-    "keystrokes": "alt-cmd-o",
+    "keystrokes": "alt-CommandOrControl-o",
     "command": "advanced-open-file:toggle"
   },
   {
@@ -808,7 +808,7 @@ export default keymap = [
     "command": "advanced-open-file:delete-path-component"
   },
   {
-    "keystrokes": "cmd-z",
+    "keystrokes": "CommandOrControl-z",
     "command": "advanced-open-file:undo"
   },
   {
@@ -824,11 +824,11 @@ export default keymap = [
     "command": "import-sort:sort"
   },
   {
-    "keystrokes": "ctrl-shift-M",
+    "keystrokes": "ctrl-Shift-M",
     "command": "atom-react-preview:toggle"
   },
   {
-    "keystrokes": "ctrl-alt-shift-D",
+    "keystrokes": "ctrl-alt-Shift-D",
     "command": "atom-ternjs:definition"
   },
   {
@@ -836,7 +836,7 @@ export default keymap = [
     "command": "atom-ternjs:rename"
   },
   {
-    "keystrokes": "ctrl-shift-R",
+    "keystrokes": "ctrl-Shift-R",
     "command": "atom-ternjs:references"
   },
   {
@@ -848,23 +848,23 @@ export default keymap = [
     "command": "atom-ternjs:documentation"
   },
   {
-    "keystrokes": "ctrl-shift-cmd-left",
+    "keystrokes": "ctrl-Shift-CommandOrControl-left",
     "command": "atom-ternjs:navigateBack"
   },
   {
-    "keystrokes": "ctrl-shift-cmd-right",
+    "keystrokes": "ctrl-Shift-CommandOrControl-right",
     "command": "atom-ternjs:navigateForward"
   },
   {
-    "keystrokes": "ctrl-alt-shift-D",
+    "keystrokes": "ctrl-alt-Shift-D",
     "command": "atom-ternjs:definition"
   },
   {
-    "keystrokes": "ctrl-alt-shift-C",
+    "keystrokes": "ctrl-alt-Shift-C",
     "command": "atom-ternjs:rename"
   },
   {
-    "keystrokes": "ctrl-alt-shift-E",
+    "keystrokes": "ctrl-alt-Shift-E",
     "command": "atom-ternjs:references"
   },
   {
@@ -876,15 +876,15 @@ export default keymap = [
     "command": "atom-ternjs:documentation"
   },
   {
-    "keystrokes": "ctrl-shift-cmd-left",
+    "keystrokes": "ctrl-Shift-CommandOrControl-left",
     "command": "atom-ternjs:navigateBack"
   },
   {
-    "keystrokes": "ctrl-shift-cmd-right",
+    "keystrokes": "ctrl-Shift-CommandOrControl-right",
     "command": "atom-ternjs:navigateForward"
   },
   {
-    "keystrokes": "ctrl-alt-shift-D",
+    "keystrokes": "ctrl-alt-Shift-D",
     "command": "atom-ternjs:definition"
   },
   {
@@ -892,7 +892,7 @@ export default keymap = [
     "command": "atom-ternjs:rename"
   },
   {
-    "keystrokes": "ctrl-shift-E",
+    "keystrokes": "ctrl-Shift-E",
     "command": "atom-ternjs:references"
   },
   {
@@ -904,15 +904,15 @@ export default keymap = [
     "command": "atom-ternjs:documentation"
   },
   {
-    "keystrokes": "ctrl-shift-cmd-left",
+    "keystrokes": "ctrl-Shift-CommandOrControl-left",
     "command": "atom-ternjs:navigateBack"
   },
   {
-    "keystrokes": "ctrl-shift-cmd-right",
+    "keystrokes": "ctrl-Shift-CommandOrControl-right",
     "command": "atom-ternjs:navigateForward"
   },
   {
-    "keystrokes": "alt-cmd-l",
+    "keystrokes": "alt-CommandOrControl-l",
     "command": "typescript:format-code"
   },
   {
@@ -924,7 +924,7 @@ export default keymap = [
     "command": "typescript:context-actions"
   },
   {
-    "keystrokes": "cmd-;",
+    "keystrokes": "CommandOrControl-;",
     "command": "typescript:context-actions"
   },
   {
@@ -932,7 +932,7 @@ export default keymap = [
     "command": "typescript:rename-refactor"
   },
   {
-    "keystrokes": "shift-f12",
+    "keystrokes": "Shift-f12",
     "command": "typescript:find-references"
   },
   {
@@ -940,11 +940,11 @@ export default keymap = [
     "command": "typescript:quick-fix"
   },
   {
-    "keystrokes": "ctrl-shift-M",
+    "keystrokes": "ctrl-Shift-M",
     "command": "typescript:output-toggle"
   },
   {
-    "keystrokes": "shift-cmd-M",
+    "keystrokes": "Shift-CommandOrControl-M",
     "command": "typescript:output-toggle"
   },
   {
@@ -964,7 +964,7 @@ export default keymap = [
     "command": "typescript:sync"
   },
   {
-    "keystrokes": "cmd-'",
+    "keystrokes": "CommandOrControl-'",
     "command": "typescript:sync"
   },
   {
@@ -972,7 +972,7 @@ export default keymap = [
     "command": "typescript:go-to-next"
   },
   {
-    "keystrokes": "shift-f8",
+    "keystrokes": "Shift-f8",
     "command": "typescript:go-to-previous"
   },
   {
@@ -980,11 +980,11 @@ export default keymap = [
     "command": "typescript:autocomplete"
   },
   {
-    "keystrokes": "cmd-space",
+    "keystrokes": "CommandOrControl-space",
     "command": "typescript:autocomplete"
   },
   {
-    "keystrokes": "alt-cmd-g",
+    "keystrokes": "alt-CommandOrControl-g",
     "command": "atomatigit:toggle"
   },
   {
@@ -1032,7 +1032,7 @@ export default keymap = [
     "command": "atomatigit:refresh"
   },
   {
-    "keystrokes": "shift-P",
+    "keystrokes": "Shift-P",
     "command": "atomatigit:push"
   },
   {
@@ -1040,7 +1040,7 @@ export default keymap = [
     "command": "atomatigit:fetch"
   },
   {
-    "keystrokes": "shift-S",
+    "keystrokes": "Shift-S",
     "command": "atomatigit:stage"
   },
   {
@@ -1048,7 +1048,7 @@ export default keymap = [
     "command": "atomatigit:stash"
   },
   {
-    "keystrokes": "shift-Z",
+    "keystrokes": "Shift-Z",
     "command": "atomatigit:stash-pop"
   },
   {
@@ -1068,7 +1068,7 @@ export default keymap = [
     "command": "atomatigit:create-branch"
   },
   {
-    "keystrokes": "shift-enter",
+    "keystrokes": "Shift-enter",
     "command": "atomatigit:hard-reset-to-commit"
   },
   {
@@ -1076,7 +1076,7 @@ export default keymap = [
     "command": "atomatigit:showCommit"
   },
   {
-    "keystrokes": "ctrl-alt-shift-A",
+    "keystrokes": "ctrl-alt-Shift-A",
     "command": "ava:run-file"
   },
   {
@@ -1084,75 +1084,75 @@ export default keymap = [
     "command": "ava:run"
   },
   {
-    "keystrokes": "shift-space",
+    "keystrokes": "Shift-space",
     "command": "emmet:expand-abbreviation-with-tab"
   },
   {
-    "keystrokes": "shift-cmd-H",
+    "keystrokes": "Shift-CommandOrControl-H",
     "command": "git-plus:menu"
   },
   {
-    "keystrokes": "shift-cmd-C",
+    "keystrokes": "Shift-CommandOrControl-C",
     "command": "git-plus:commit"
   },
   {
-    "keystrokes": "shift-cmd-A s",
+    "keystrokes": "Shift-CommandOrControl-A s",
     "command": "git-plus:status"
   },
   {
-    "keystrokes": "shift-cmd-A q",
+    "keystrokes": "Shift-CommandOrControl-A q",
     "command": "git-plus:add-and-commit-and-push"
   },
   {
-    "keystrokes": "shift-cmd-A a",
+    "keystrokes": "Shift-CommandOrControl-A a",
     "command": "git-plus:add-all-and-commit"
   },
   {
-    "keystrokes": "shift-cmd-A p",
+    "keystrokes": "Shift-CommandOrControl-A p",
     "command": "git-plus:add-all-commit-and-push"
   },
   {
-    "keystrokes": "ctrl-shift-H",
+    "keystrokes": "ctrl-Shift-H",
     "command": "git-plus:menu"
   },
   {
-    "keystrokes": "ctrl-shift-X",
+    "keystrokes": "ctrl-Shift-X",
     "command": "git-plus:commit"
   },
   {
-    "keystrokes": "ctrl-shift-A s",
+    "keystrokes": "ctrl-Shift-A s",
     "command": "git-plus:status"
   },
   {
-    "keystrokes": "ctrl-shift-A q",
+    "keystrokes": "ctrl-Shift-A q",
     "command": "git-plus:add-and-commit-and-push"
   },
   {
-    "keystrokes": "ctrl-shift-A a",
+    "keystrokes": "ctrl-Shift-A a",
     "command": "git-plus:add-all-and-commit"
   },
   {
-    "keystrokes": "ctrl-shift-A p",
+    "keystrokes": "ctrl-Shift-A p",
     "command": "git-plus:add-all-commit-and-push"
   },
   {
-    "keystrokes": "shift-cmd-A",
+    "keystrokes": "Shift-CommandOrControl-A",
     "command": "git-plus:add"
   },
   {
-    "keystrokes": "shift-cmd-A c",
+    "keystrokes": "Shift-CommandOrControl-A c",
     "command": "git-plus:add-and-commit"
   },
   {
-    "keystrokes": "ctrl-shift-A",
+    "keystrokes": "ctrl-Shift-A",
     "command": "git-plus:add"
   },
   {
-    "keystrokes": "ctrl-shift-A c",
+    "keystrokes": "ctrl-Shift-A c",
     "command": "git-plus:add-and-commit"
   },
   {
-    "keystrokes": "shift-cmd-K",
+    "keystrokes": "Shift-CommandOrControl-K",
     "command": "hey-pane:toggle-focus-of-active-pane"
   },
   {
@@ -1160,15 +1160,15 @@ export default keymap = [
     "command": "linter:next-error"
   },
   {
-    "keystrokes": "ctrl-cmd-p",
+    "keystrokes": "ctrl-CommandOrControl-p",
     "command": "project-manager:list-projects"
   },
   {
-    "keystrokes": "alt-shift-P",
+    "keystrokes": "alt-Shift-P",
     "command": "project-manager:list-projects"
   },
   {
-    "keystrokes": "alt-shift-P",
+    "keystrokes": "alt-Shift-P",
     "command": "project-manager:list-projects"
   },
   {
@@ -1176,7 +1176,7 @@ export default keymap = [
     "command": "core:confirm"
   },
   {
-    "keystrokes": "shift-enter",
+    "keystrokes": "Shift-enter",
     "command": "project-manager:alt-confirm"
   },
   {
@@ -1200,11 +1200,11 @@ export default keymap = [
     "command": "autocomplete-plus:cancel"
   },
   {
-    "keystrokes": "alt-cmd-q",
+    "keystrokes": "alt-CommandOrControl-q",
     "command": "autoflow:reflow-selection"
   },
   {
-    "keystrokes": "ctrl-shift-Q",
+    "keystrokes": "ctrl-Shift-Q",
     "command": "autoflow:reflow-selection"
   },
   {
@@ -1216,15 +1216,15 @@ export default keymap = [
     "command": "bookmarks:jump-to-next-bookmark"
   },
   {
-    "keystrokes": "shift-f2",
+    "keystrokes": "Shift-f2",
     "command": "bookmarks:jump-to-previous-bookmark"
   },
   {
-    "keystrokes": "cmd-f2",
+    "keystrokes": "CommandOrControl-f2",
     "command": "bookmarks:toggle-bookmark"
   },
   {
-    "keystrokes": "shift-cmd-f2",
+    "keystrokes": "Shift-CommandOrControl-f2",
     "command": "bookmarks:clear-bookmarks"
   },
   {
@@ -1232,15 +1232,15 @@ export default keymap = [
     "command": "bookmarks:toggle-bookmark"
   },
   {
-    "keystrokes": "ctrl-shift-f2",
+    "keystrokes": "ctrl-Shift-f2",
     "command": "bookmarks:clear-bookmarks"
   },
   {
-    "keystrokes": "ctrl-shift-f2",
+    "keystrokes": "ctrl-Shift-f2",
     "command": "bookmarks:toggle-bookmark"
   },
   {
-    "keystrokes": "alt-shift-f2",
+    "keystrokes": "alt-Shift-f2",
     "command": "bookmarks:clear-bookmarks"
   },
   {
@@ -1252,11 +1252,11 @@ export default keymap = [
     "command": "bracket-matcher:remove-brackets-from-selection"
   },
   {
-    "keystrokes": "ctrl-cmd-m",
+    "keystrokes": "ctrl-CommandOrControl-m",
     "command": "bracket-matcher:select-inside-brackets"
   },
   {
-    "keystrokes": "alt-cmd-.",
+    "keystrokes": "alt-CommandOrControl-.",
     "command": "bracket-matcher:close-tag"
   },
   {
@@ -1288,31 +1288,32 @@ export default keymap = [
     "command": "bracket-matcher:remove-matching-brackets"
   },
   {
-    "keystrokes": "shift-cmd-P",
+    "keystrokes": "Shift-CommandOrControl-P",
+    "command": "command-palette:toggle",
+    "enabled": true
+  },
+  {
+    "keystrokes": "ctrl-Shift-P",
     "command": "command-palette:toggle"
   },
   {
-    "keystrokes": "ctrl-shift-P",
+    "keystrokes": "ctrl-Shift-P",
     "command": "command-palette:toggle"
   },
   {
-    "keystrokes": "ctrl-shift-P",
-    "command": "command-palette:toggle"
-  },
-  {
-    "keystrokes": "ctrl-shift-cmd-R",
+    "keystrokes": "ctrl-Shift-CommandOrControl-R",
     "command": "dev-live-reload:reload-all"
   },
   {
-    "keystrokes": "ctrl-alt-shift-R",
+    "keystrokes": "ctrl-alt-Shift-R",
     "command": "dev-live-reload:reload-all"
   },
   {
-    "keystrokes": "ctrl-shift-U",
+    "keystrokes": "ctrl-Shift-U",
     "command": "encoding-selector:show"
   },
   {
-    "keystrokes": "ctrl-shift-U",
+    "keystrokes": "ctrl-Shift-U",
     "command": "encoding-selector:show"
   },
   {
@@ -1320,19 +1321,19 @@ export default keymap = [
     "command": "encoding-selector:show"
   },
   {
-    "keystrokes": "shift-cmd-F",
+    "keystrokes": "Shift-CommandOrControl-F",
     "command": "project-find:show"
   },
   {
-    "keystrokes": "cmd-f",
+    "keystrokes": "CommandOrControl-f",
     "command": "find-and-replace:show"
   },
   {
-    "keystrokes": "alt-cmd-f",
+    "keystrokes": "alt-CommandOrControl-f",
     "command": "find-and-replace:show-replace"
   },
   {
-    "keystrokes": "ctrl-shift-F",
+    "keystrokes": "ctrl-Shift-F",
     "command": "project-find:show"
   },
   {
@@ -1340,43 +1341,43 @@ export default keymap = [
     "command": "find-and-replace:show"
   },
   {
-    "keystrokes": "cmd-g",
+    "keystrokes": "CommandOrControl-g",
     "command": "find-and-replace:find-next"
   },
   {
-    "keystrokes": "shift-cmd-G",
+    "keystrokes": "Shift-CommandOrControl-G",
     "command": "find-and-replace:find-previous"
   },
   {
-    "keystrokes": "cmd-f3",
+    "keystrokes": "CommandOrControl-f3",
     "command": "find-and-replace:find-next-selected"
   },
   {
-    "keystrokes": "shift-cmd-f3",
+    "keystrokes": "Shift-CommandOrControl-f3",
     "command": "find-and-replace:find-previous-selected"
   },
   {
-    "keystrokes": "ctrl-cmd-g",
+    "keystrokes": "ctrl-CommandOrControl-g",
     "command": "find-and-replace:select-all"
   },
   {
-    "keystrokes": "cmd-d",
+    "keystrokes": "CommandOrControl-d",
     "command": "find-and-replace:select-next"
   },
   {
-    "keystrokes": "alt-cmd-e",
+    "keystrokes": "alt-CommandOrControl-e",
     "command": "find-and-replace:replace-next"
   },
   {
-    "keystrokes": "cmd-e",
+    "keystrokes": "CommandOrControl-e",
     "command": "find-and-replace:use-selection-as-find-pattern"
   },
   {
-    "keystrokes": "cmd-u",
+    "keystrokes": "CommandOrControl-u",
     "command": "find-and-replace:select-undo"
   },
   {
-    "keystrokes": "cmd-k cmd-d",
+    "keystrokes": "CommandOrControl-k CommandOrControl-d",
     "command": "find-and-replace:select-skip"
   },
   {
@@ -1384,7 +1385,7 @@ export default keymap = [
     "command": "find-and-replace:find-next"
   },
   {
-    "keystrokes": "shift-f3",
+    "keystrokes": "Shift-f3",
     "command": "find-and-replace:find-previous"
   },
   {
@@ -1392,7 +1393,7 @@ export default keymap = [
     "command": "find-and-replace:find-next-selected"
   },
   {
-    "keystrokes": "ctrl-shift-f3",
+    "keystrokes": "ctrl-Shift-f3",
     "command": "find-and-replace:find-previous-selected"
   },
   {
@@ -1416,11 +1417,11 @@ export default keymap = [
     "command": "find-and-replace:select-skip"
   },
   {
-    "keystrokes": "shift-enter",
+    "keystrokes": "Shift-enter",
     "command": "find-and-replace:show-previous"
   },
   {
-    "keystrokes": "cmd-enter",
+    "keystrokes": "CommandOrControl-enter",
     "command": "find-and-replace:confirm"
   },
   {
@@ -1428,23 +1429,23 @@ export default keymap = [
     "command": "find-and-replace:find-all"
   },
   {
-    "keystrokes": "alt-cmd-/",
+    "keystrokes": "alt-CommandOrControl-/",
     "command": "find-and-replace:toggle-regex-option"
   },
   {
-    "keystrokes": "alt-cmd-c",
+    "keystrokes": "alt-CommandOrControl-c",
     "command": "find-and-replace:toggle-case-option"
   },
   {
-    "keystrokes": "alt-cmd-s",
+    "keystrokes": "alt-CommandOrControl-s",
     "command": "find-and-replace:toggle-selection-option"
   },
   {
-    "keystrokes": "alt-cmd-w",
+    "keystrokes": "alt-CommandOrControl-w",
     "command": "find-and-replace:toggle-whole-word-option"
   },
   {
-    "keystrokes": "shift-enter",
+    "keystrokes": "Shift-enter",
     "command": "find-and-replace:show-previous"
   },
   {
@@ -1460,23 +1461,23 @@ export default keymap = [
     "command": "find-and-replace:toggle-regex-option"
   },
   {
-    "keystrokes": "ctrl-shift-C",
+    "keystrokes": "ctrl-Shift-C",
     "command": "find-and-replace:toggle-case-option"
   },
   {
-    "keystrokes": "cmd-enter",
+    "keystrokes": "CommandOrControl-enter",
     "command": "project-find:confirm"
   },
   {
-    "keystrokes": "alt-cmd-/",
+    "keystrokes": "alt-CommandOrControl-/",
     "command": "project-find:toggle-regex-option"
   },
   {
-    "keystrokes": "alt-cmd-c",
+    "keystrokes": "alt-CommandOrControl-c",
     "command": "project-find:toggle-case-option"
   },
   {
-    "keystrokes": "alt-cmd-w",
+    "keystrokes": "alt-CommandOrControl-w",
     "command": "project-find:toggle-whole-word-option"
   },
   {
@@ -1488,7 +1489,7 @@ export default keymap = [
     "command": "project-find:toggle-regex-option"
   },
   {
-    "keystrokes": "ctrl-shift-C",
+    "keystrokes": "ctrl-Shift-C",
     "command": "find-and-replace:toggle-case-option"
   },
   {
@@ -1496,15 +1497,15 @@ export default keymap = [
     "command": "find-and-replace:focus-next"
   },
   {
-    "keystrokes": "shift-tab",
+    "keystrokes": "Shift-tab",
     "command": "find-and-replace:focus-previous"
   },
   {
-    "keystrokes": "cmd-enter",
+    "keystrokes": "CommandOrControl-enter",
     "command": "find-and-replace:replace-all"
   },
   {
-    "keystrokes": "cmd-enter",
+    "keystrokes": "CommandOrControl-enter",
     "command": "project-find:replace-all"
   },
   {
@@ -1524,19 +1525,19 @@ export default keymap = [
     "command": "project-find:replace-all"
   },
   {
-    "keystrokes": "cmd-t",
+    "keystrokes": "CommandOrControl-t",
     "command": "fuzzy-finder:toggle-file-finder"
   },
   {
-    "keystrokes": "cmd-p",
+    "keystrokes": "CommandOrControl-p",
     "command": "fuzzy-finder:toggle-file-finder"
   },
   {
-    "keystrokes": "cmd-b",
+    "keystrokes": "CommandOrControl-b",
     "command": "fuzzy-finder:toggle-buffer-finder"
   },
   {
-    "keystrokes": "shift-cmd-B",
+    "keystrokes": "Shift-CommandOrControl-B",
     "command": "fuzzy-finder:toggle-git-status-finder"
   },
   {
@@ -1552,7 +1553,7 @@ export default keymap = [
     "command": "fuzzy-finder:toggle-buffer-finder"
   },
   {
-    "keystrokes": "ctrl-shift-B",
+    "keystrokes": "ctrl-Shift-B",
     "command": "fuzzy-finder:toggle-git-status-finder"
   },
   {
@@ -1568,11 +1569,11 @@ export default keymap = [
     "command": "fuzzy-finder:toggle-buffer-finder"
   },
   {
-    "keystrokes": "ctrl-shift-B",
+    "keystrokes": "ctrl-Shift-B",
     "command": "fuzzy-finder:toggle-git-status-finder"
   },
   {
-    "keystrokes": "shift-enter",
+    "keystrokes": "Shift-enter",
     "command": "fuzzy-finder:invert-confirm"
   },
   {
@@ -1600,7 +1601,7 @@ export default keymap = [
     "command": "core:cancel"
   },
   {
-    "keystrokes": "cmd-w",
+    "keystrokes": "CommandOrControl-w",
     "command": "core:cancel"
   },
   {
@@ -1612,39 +1613,39 @@ export default keymap = [
     "command": "core:cancel"
   },
   {
-    "keystrokes": "ctrl-shift-L",
+    "keystrokes": "ctrl-Shift-L",
     "command": "grammar-selector:show"
   },
   {
-    "keystrokes": "ctrl-shift-L",
+    "keystrokes": "ctrl-Shift-L",
     "command": "grammar-selector:show"
   },
   {
-    "keystrokes": "ctrl-shift-L",
+    "keystrokes": "ctrl-Shift-L",
     "command": "grammar-selector:show"
   },
   {
-    "keystrokes": "cmd-+",
+    "keystrokes": "CommandOrControl-+",
     "command": "image-view:zoom-in"
   },
   {
-    "keystrokes": "cmd-=",
+    "keystrokes": "CommandOrControl-=",
     "command": "image-view:zoom-in"
   },
   {
-    "keystrokes": "cmd--",
+    "keystrokes": "CommandOrControl--",
     "command": "image-view:zoom-out"
   },
   {
-    "keystrokes": "cmd-_",
+    "keystrokes": "CommandOrControl-_",
     "command": "image-view:zoom-out"
   },
   {
-    "keystrokes": "cmd-9",
+    "keystrokes": "CommandOrControl-9",
     "command": "image-view:zoom-to-fit"
   },
   {
-    "keystrokes": "cmd-0",
+    "keystrokes": "CommandOrControl-0",
     "command": "image-view:reset-zoom"
   },
   {
@@ -1696,7 +1697,7 @@ export default keymap = [
     "command": "image-view:reset-zoom"
   },
   {
-    "keystrokes": "cmd-.",
+    "keystrokes": "CommandOrControl-.",
     "command": "key-binding-resolver:toggle"
   },
   {
@@ -1708,31 +1709,31 @@ export default keymap = [
     "command": "key-binding-resolver:toggle"
   },
   {
-    "keystrokes": "ctrl-shift-O",
+    "keystrokes": "ctrl-Shift-O",
     "command": "link:open"
   },
   {
-    "keystrokes": "ctrl-shift-M",
+    "keystrokes": "ctrl-Shift-M",
     "command": "markdown-preview:toggle"
   },
   {
-    "keystrokes": "cmd-+",
+    "keystrokes": "CommandOrControl-+",
     "command": "markdown-preview:zoom-in"
   },
   {
-    "keystrokes": "cmd-=",
+    "keystrokes": "CommandOrControl-=",
     "command": "markdown-preview:zoom-in"
   },
   {
-    "keystrokes": "cmd--",
+    "keystrokes": "CommandOrControl--",
     "command": "markdown-preview:zoom-out"
   },
   {
-    "keystrokes": "cmd-_",
+    "keystrokes": "CommandOrControl-_",
     "command": "markdown-preview:zoom-out"
   },
   {
-    "keystrokes": "cmd-0",
+    "keystrokes": "CommandOrControl-0",
     "command": "markdown-preview:reset-zoom"
   },
   {
@@ -1756,7 +1757,7 @@ export default keymap = [
     "command": "markdown-preview:reset-zoom"
   },
   {
-    "keystrokes": "alt-cmd-t",
+    "keystrokes": "alt-CommandOrControl-t",
     "command": "notifications:trigger-error"
   },
   {
@@ -1788,7 +1789,7 @@ export default keymap = [
     "command": "open-on-github:repository"
   },
   {
-    "keystrokes": "cmd-,",
+    "keystrokes": "CommandOrControl-,",
     "command": "settings-view:open"
   },
   {
@@ -1804,15 +1805,15 @@ export default keymap = [
     "command": "snippets:next-tab-stop"
   },
   {
-    "keystrokes": "shift-tab",
+    "keystrokes": "Shift-tab",
     "command": "snippets:previous-tab-stop"
   },
   {
-    "keystrokes": "cmd-:",
+    "keystrokes": "CommandOrControl-:",
     "command": "spell-check:correct-misspelling"
   },
   {
-    "keystrokes": "cmd-:",
+    "keystrokes": "CommandOrControl-:",
     "command": "core:cancel"
   },
   {
@@ -1840,23 +1841,23 @@ export default keymap = [
     "command": "core:confirm"
   },
   {
-    "keystrokes": "ctrl-shift-cmd-G",
+    "keystrokes": "ctrl-Shift-CommandOrControl-G",
     "command": "styleguide:show"
   },
   {
-    "keystrokes": "ctrl-shift-G",
+    "keystrokes": "ctrl-Shift-G",
     "command": "styleguide:show"
   },
   {
-    "keystrokes": "cmd-r",
+    "keystrokes": "CommandOrControl-r",
     "command": "symbols-view:toggle-file-symbols"
   },
   {
-    "keystrokes": "alt-cmd-down",
+    "keystrokes": "alt-CommandOrControl-down",
     "command": "symbols-view:go-to-declaration"
   },
   {
-    "keystrokes": "alt-cmd-up",
+    "keystrokes": "alt-CommandOrControl-up",
     "command": "symbols-view:return-from-declaration"
   },
   {
@@ -1876,23 +1877,23 @@ export default keymap = [
     "command": "symbols-view:return-from-declaration"
   },
   {
-    "keystrokes": "shift-cmd-R",
+    "keystrokes": "Shift-CommandOrControl-R",
     "command": "symbols-view:toggle-project-symbols"
   },
   {
-    "keystrokes": "ctrl-shift-R",
+    "keystrokes": "ctrl-Shift-R",
     "command": "symbols-view:toggle-project-symbols"
   },
   {
-    "keystrokes": "cmd-\\",
+    "keystrokes": "CommandOrControl-\\",
     "command": "tree-view:toggle"
   },
   {
-    "keystrokes": "cmd-k cmd-b",
+    "keystrokes": "CommandOrControl-k CommandOrControl-b",
     "command": "tree-view:toggle"
   },
   {
-    "keystrokes": "cmd-|",
+    "keystrokes": "CommandOrControl-|",
     "command": "tree-view:reveal-active-file"
   },
   {
@@ -1916,15 +1917,15 @@ export default keymap = [
     "command": "tree-view:toggle-focus"
   },
   {
-    "keystrokes": "cmd-c",
+    "keystrokes": "CommandOrControl-c",
     "command": "tree-view:copy"
   },
   {
-    "keystrokes": "cmd-x",
+    "keystrokes": "CommandOrControl-x",
     "command": "tree-view:cut"
   },
   {
-    "keystrokes": "cmd-v",
+    "keystrokes": "CommandOrControl-v",
     "command": "tree-view:paste"
   },
   {
@@ -1936,71 +1937,71 @@ export default keymap = [
     "command": "tree-view:collapse-directory"
   },
   {
-    "keystrokes": "cmd-k right",
+    "keystrokes": "CommandOrControl-k right",
     "command": "tree-view:open-selected-entry-right"
   },
   {
-    "keystrokes": "cmd-k l",
+    "keystrokes": "CommandOrControl-k l",
     "command": "tree-view:open-selected-entry-right"
   },
   {
-    "keystrokes": "cmd-k left",
+    "keystrokes": "CommandOrControl-k left",
     "command": "tree-view:open-selected-entry-left"
   },
   {
-    "keystrokes": "cmd-k h",
+    "keystrokes": "CommandOrControl-k h",
     "command": "tree-view:open-selected-entry-left"
   },
   {
-    "keystrokes": "cmd-k up",
+    "keystrokes": "CommandOrControl-k up",
     "command": "tree-view:open-selected-entry-up"
   },
   {
-    "keystrokes": "cmd-k k",
+    "keystrokes": "CommandOrControl-k k",
     "command": "tree-view:open-selected-entry-up"
   },
   {
-    "keystrokes": "cmd-k down",
+    "keystrokes": "CommandOrControl-k down",
     "command": "tree-view:open-selected-entry-down"
   },
   {
-    "keystrokes": "cmd-k j",
+    "keystrokes": "CommandOrControl-k j",
     "command": "tree-view:open-selected-entry-down"
   },
   {
-    "keystrokes": "cmd-1",
+    "keystrokes": "CommandOrControl-1",
     "command": "tree-view:open-selected-entry-in-pane-1"
   },
   {
-    "keystrokes": "cmd-2",
+    "keystrokes": "CommandOrControl-2",
     "command": "tree-view:open-selected-entry-in-pane-2"
   },
   {
-    "keystrokes": "cmd-3",
+    "keystrokes": "CommandOrControl-3",
     "command": "tree-view:open-selected-entry-in-pane-3"
   },
   {
-    "keystrokes": "cmd-4",
+    "keystrokes": "CommandOrControl-4",
     "command": "tree-view:open-selected-entry-in-pane-4"
   },
   {
-    "keystrokes": "cmd-5",
+    "keystrokes": "CommandOrControl-5",
     "command": "tree-view:open-selected-entry-in-pane-5"
   },
   {
-    "keystrokes": "cmd-6",
+    "keystrokes": "CommandOrControl-6",
     "command": "tree-view:open-selected-entry-in-pane-6"
   },
   {
-    "keystrokes": "cmd-7",
+    "keystrokes": "CommandOrControl-7",
     "command": "tree-view:open-selected-entry-in-pane-7"
   },
   {
-    "keystrokes": "cmd-8",
+    "keystrokes": "CommandOrControl-8",
     "command": "tree-view:open-selected-entry-in-pane-8"
   },
   {
-    "keystrokes": "cmd-9",
+    "keystrokes": "CommandOrControl-9",
     "command": "tree-view:open-selected-entry-in-pane-9"
   },
   {
@@ -2128,7 +2129,7 @@ export default keymap = [
     "command": "tree-view:open-selected-entry"
   },
   {
-    "keystrokes": "ctrl-shift-C",
+    "keystrokes": "ctrl-Shift-C",
     "command": "tree-view:copy-full-path"
   },
   {
@@ -2144,7 +2145,7 @@ export default keymap = [
     "command": "tree-view:add-file"
   },
   {
-    "keystrokes": "shift-A",
+    "keystrokes": "Shift-A",
     "command": "tree-view:add-folder"
   },
   {
@@ -2188,3 +2189,4 @@ export default keymap = [
     "command": "core:cancel"
   }
 ]
+module.exports = keymap

@@ -9,13 +9,13 @@ var CodeMirror = _interopDefault(require('react-codemirror'));
 var debug = _interopDefault(require('debug'));
 var jetpack = _interopDefault(require('fs-jetpack'));
 var fuzzaldrin = require('fuzzaldrin');
-var electron = require('electron');
+require('electron');
 var Webview = _interopDefault(require('react-electron-web-view'));
 var express = _interopDefault(require('express'));
-var reactObject = require('react-object');
+require('react-object');
 var consoleBoard = require('console-board');
 var ReactDOM = _interopDefault(require('react-dom'));
-var _zillding_reactConsole = require('@zillding/react-console');
+var _zillding_reactConsole = _interopDefault(require('@zillding/react-console'));
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -47,30 +47,7 @@ var createClass = function () {
 
 
 
-var get = function get(object, property, receiver) {
-  if (object === null) object = Function.prototype;
-  var desc = Object.getOwnPropertyDescriptor(object, property);
 
-  if (desc === undefined) {
-    var parent = Object.getPrototypeOf(object);
-
-    if (parent === null) {
-      return undefined;
-    } else {
-      return get(parent, property, receiver);
-    }
-  } else if ("value" in desc) {
-    return desc.value;
-  } else {
-    var getter = desc.get;
-
-    if (getter === undefined) {
-      return undefined;
-    }
-
-    return getter.call(receiver);
-  }
-};
 
 var inherits = function (subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -104,30 +81,6 @@ var possibleConstructorReturn = function (self, call) {
   }
 
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
-};
-
-
-
-var set = function set(object, property, value, receiver) {
-  var desc = Object.getOwnPropertyDescriptor(object, property);
-
-  if (desc === undefined) {
-    var parent = Object.getPrototypeOf(object);
-
-    if (parent !== null) {
-      set(parent, property, value, receiver);
-    }
-  } else if ("value" in desc && desc.writable) {
-    desc.value = value;
-  } else {
-    var setter = desc.set;
-
-    if (setter !== undefined) {
-      setter.call(receiver, value);
-    }
-  }
-
-  return value;
 };
 
 require('codemirror/mode/javascript/javascript');
