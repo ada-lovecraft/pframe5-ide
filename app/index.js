@@ -12,7 +12,10 @@ var fuzzaldrin = require('fuzzaldrin');
 var electron = require('electron');
 var Webview = _interopDefault(require('react-electron-web-view'));
 var express = _interopDefault(require('express'));
+var reactObject = require('react-object');
+var consoleBoard = require('console-board');
 var ReactDOM = _interopDefault(require('react-dom'));
+var _zillding_reactConsole = require('@zillding/react-console');
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -128,7 +131,7 @@ var set = function set(object, property, value, receiver) {
 };
 
 require('codemirror/mode/javascript/javascript');
-var log$1 = debug('Editor:log');
+var log$1 = console.log;
 
 var EditorPframe = function (_Component) {
   inherits(EditorPframe, _Component);
@@ -155,7 +158,7 @@ var EditorPframe = function (_Component) {
     key: 'componentWillMount',
     value: function componentWillMount() {
       this.props.glEventHub.on('editor:file-select', this.loadFile);
-      this.props.glEventHub.on('editor:save-active-file', this.saveFile.bind(this));
+      this.props.glEventHub.on('editor:save-active-file', this.saveFile.bind());
     }
   }, {
     key: 'componentWillUnmount',
@@ -198,7 +201,6 @@ var EditorPframe = function (_Component) {
 
       var project = jetpack.cwd(PROJECT_DIRECTORY);
       project.writeAsync(this.state.file, this.state.code).then(function () {
-        _this3.setState({ dirty: false });
         log$1('saved file');
         _this3.props.glEventHub.emit('preview:refresh');
       });
@@ -396,7 +398,6 @@ var CommandPframe = function (_Component) {
   return CommandPframe;
 }(React$1.Component);
 
-var log$5 = debug('PreviewPframe:log');
 var PreviewPframe = function (_Component) {
   inherits(PreviewPframe, _Component);
 
@@ -424,7 +425,7 @@ var PreviewPframe = function (_Component) {
       var server = express();
       server.use(express.static(PROJECT_DIRECTORY));
       this.server = server.listen(this.port, function () {
-        log$5('server started:', _this2.port);
+        console.log('PreviewPframe:', 'server started');
         _this2.setState({ serverReady: true });
       });
       this.props.glEventHub.on('preview:refresh', function () {
@@ -435,13 +436,8 @@ var PreviewPframe = function (_Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var _this3 = this;
-
-      this.frame.view.addEventListener('console-message', function (e) {
-        console.log('sketch:', JSON.parse(e.message), e);
-      });
       this.frame.view.addEventListener('dom-ready', function () {
-        _this3.frame.view.openDevTools();
+        // this.frame.view.openDevTools()
       });
     }
   }, {
@@ -457,7 +453,7 @@ var PreviewPframe = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       var src = 'http://localhost:' + this.port;
       return React$1__default.createElement(
@@ -465,9 +461,8 @@ var PreviewPframe = function (_Component) {
         { className: 'preview-pframe' },
         React$1__default.createElement(Webview, { src: src,
           ref: function ref(frame) {
-            return _this4.frame = frame;
+            return _this3.frame = frame;
           },
-          preload: '../src/shims/console.shim.js',
           nodeintegration: true,
           disablewebsecurity: true
         })
@@ -486,23 +481,19 @@ var DebugPframe = function (_Component) {
     var _this = possibleConstructorReturn(this, (DebugPframe.__proto__ || Object.getPrototypeOf(DebugPframe)).call(this, props));
 
     _this.state = {
-      log: []
+      messages: []
     };
     return _this;
   }
 
   createClass(DebugPframe, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.props.glContainer.setTitle('Live Debugger');
-    }
-  }, {
     key: 'render',
     value: function render() {
       return React$1__default.createElement(
         'div',
-        { className: 'CommandPframe' },
-        this.state.component
+        { className: 'DebugPframe' },
+        '//',
+        consoleBoard.injectRender({ toggleByTouch: false, showOnInit: true, showInput: true })
       );
     }
   }]);
@@ -590,6 +581,13 @@ window.refreshPreview = function () {
 };
 window.saveFile = function () {
     return gl.eventHub.emit('editor:save-active-file');
+};
+window.log = function () {
+    for (var _len = arguments.length, msg = Array(_len), _key = 0; _key < _len; _key++) {
+        msg[_key] = arguments[_key];
+    }
+
+    return gl.eventHub.emit('debugger:log', { message: msg });
 };
 //ReactDOM.render(<CommandPframe glEventHub={gl.eventHub}/>, document.getElementById('command-pframe'))
 

@@ -1,0 +1,25 @@
+.DebugPframe {
+  font-family: @theme-font !important;
+  background-color: @theme-text;
+  color: @theme-background;
+  display: block;
+  width: 100%;
+  height: 100%;
+  .log-item {
+    border-bottom: 1px solid @theme-border;
+    padding: 10px;
+    .log-item-timestamp {
+      color: darken(@theme-text, 50%);
+      font-size: 10px;
+    }
+    .log-item-label {
+      font-size: 10px;
+      column-rule: @theme-highlight-background;
+      margin-left: 10px;
+    }
+    .log-item-message {
+      display: inline-block;
+    }
+  }
+
+}

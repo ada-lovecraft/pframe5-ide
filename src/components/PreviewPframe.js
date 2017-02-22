@@ -6,7 +6,7 @@ import {filter as fuzz} from 'fuzzaldrin'
 import FileSelectorItem from './FileSelectorItem'
 import Webview from 'react-electron-web-view'
 import express from 'express'
-const log = debug('PreviewPframe:log')
+
 const app = remote.app;
 
 export default class PreviewPframe extends Component {
@@ -26,7 +26,7 @@ export default class PreviewPframe extends Component {
     const server = express()
     server.use(express.static(PROJECT_DIRECTORY))
     this.server = server.listen(this.port, () => {
-      log('server started:', this.port)
+      console.log('PreviewPframe:', 'server started')
       this.setState({serverReady: true})
     })
     this.props.glEventHub.on('preview:refresh', () => this.refresh())
@@ -34,11 +34,8 @@ export default class PreviewPframe extends Component {
   }
 
   componentDidMount() {
-    this.frame.view.addEventListener('console-message', e => {
-      console.log('sketch:', JSON.parse(e.message), e)
-    })
     this.frame.view.addEventListener('dom-ready', () => {
-      this.frame.view.openDevTools()
+      // this.frame.view.openDevTools()
     })
   }
   refresh() {
@@ -54,7 +51,6 @@ export default class PreviewPframe extends Component {
       <div className="preview-pframe">
         <Webview src={src}
           ref={(frame) => this.frame = frame}
-          preload="../src/shims/console.shim.js"
           nodeintegration
           disablewebsecurity
         />

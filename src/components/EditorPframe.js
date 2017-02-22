@@ -4,7 +4,7 @@ require('codemirror/mode/javascript/javascript')
 import debug from 'debug'
 import jetpack from 'fs-jetpack'
 
-const log = debug('Editor:log')
+const log = console.log
 
 export default class EditorPframe extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class EditorPframe extends Component {
 
   componentWillMount() {
     this.props.glEventHub.on('editor:file-select', this.loadFile )
-    this.props.glEventHub.on('editor:save-active-file', this.saveFile.bind(this) )
+    this.props.glEventHub.on('editor:save-active-file', this.saveFile.bind() )
   }
   componentWillUnmount() {
     this.props.glEventHub.off( 'editor:file-select', this.setUser );
@@ -58,7 +58,6 @@ export default class EditorPframe extends Component {
     const project = jetpack.cwd(PROJECT_DIRECTORY)
     project.writeAsync(this.state.file, this.state.code)
     .then( () => {
-      this.setState({dirty:false})
       log('saved file')
       this.props.glEventHub.emit('preview:refresh')
     })

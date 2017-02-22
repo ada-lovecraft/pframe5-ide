@@ -5,7 +5,7 @@ var electron = require('electron');
 var gulp = require('gulp');
 
 gulp.task('start', ['build', 'watch'], function () {
-    childProcess.spawn(electron, ['.'], {
+    childProcess.spawn(electron, ['.', '--remote-debugging-port=9222'], {
         stdio: 'inherit'
     })
     .on('close', function () {

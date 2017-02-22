@@ -8,6 +8,7 @@ import CommandPframe from './components/CommandPframe'
 import PreviewPframe from './components/PreviewPframe'
 import DebugPframe from './components/DebugPframe'
 import Debugger from './components/Debug'
+import Console from '@zillding/react-console'
 
 import debug from 'debug'
 const log = debug('app:log')
@@ -63,4 +64,5 @@ document.addEventListener('keypress', evt => {
 
 window.refreshPreview = () => gl.eventHub.emit('preview:refresh')
 window.saveFile = () => gl.eventHub.emit('editor:save-active-file')
+window.log = (...msg) => gl.eventHub.emit('debugger:log', {message: msg})
 //ReactDOM.render(<CommandPframe glEventHub={gl.eventHub}/>, document.getElementById('command-pframe'))

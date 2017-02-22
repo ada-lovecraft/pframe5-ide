@@ -10,6 +10,10 @@ import { devMenuTemplate } from './menu/dev_menu_template';
 import { editMenuTemplate } from './menu/edit_menu_template';
 import createWindow from './helpers/window';
 import express from 'express'
+import keymap from '../data/keycommands.js'
+import {ipcMain as ipc} from 'electron'
+import shortcut from 'electron-localshortcut'
+
 
 
 // Special module holding environment variables which you declared
@@ -49,8 +53,10 @@ app.on('ready', function () {
     }));
 
     if (env.name === 'development') {
-        mainWindow.openDevTools();
+      mainWindow.openDevTools()
     }
+
+    registerKeycommands.call(this)
 });
 
 app.on('window-all-closed', function () {
@@ -84,4 +90,17 @@ app.startServer = function(baseDir) {
 
 app.stopServer = function() {
   log('no need to stop the server...')
+}
+
+const sendKeyCommand = cmd => {
+  log('sending command:', cmd)
+  ipc.send('keycommand', cmd)
+}
+
+const registerKeycommands = () => {
+  keymap.forEach(keycmd => {
+    shortcut(keycmd.keystrokes,() => {
+      sendKeyCommand(keycmd.command)
+    })
+  })
 }
