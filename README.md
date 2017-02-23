@@ -2,6 +2,8 @@
 > pronounced 'frames'
 **pframe5** is an environment for creative coding, sharing, remixing, and learning using, primarily, [p5.js](https://p5js.org).
 
+![screenshot](docs/ss.png)
+
 ## Installation
 Clone the repo, navigate to it in terminal, and then:
 `$ npm install`
