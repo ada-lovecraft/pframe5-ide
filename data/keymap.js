@@ -247,7 +247,7 @@ const keymap = [
   {
     "keys": "CommandOrControl+S",
     "cmd": "core:save",
-    "enabled": false
+    "enabled": true
   },
   {
     "keys": "Shift+CommandOrControl+S",
@@ -952,7 +952,7 @@ const keymap = [
   {
     "keys": "Alt+CommandOrControl+O",
     "cmd": "advanced-open-file:toggle",
-    "enabled": false
+    "enabled": true
   },
   {
     "keys": "Ctrl+Alt+O",
@@ -962,17 +962,17 @@ const keymap = [
   {
     "keys": "Tab",
     "cmd": "advanced-open-file:autocomplete",
-    "enabled": false
+    "enabled": true
   },
   {
     "keys": "Up",
     "cmd": "advanced-open-file:move-cursor-up",
-    "enabled": false
+    "enabled": true
   },
   {
     "keys": "Down",
     "cmd": "advanced-open-file:move-cursor-down",
-    "enabled": false
+    "enabled": true
   },
   {
     "keys": "Pageup",

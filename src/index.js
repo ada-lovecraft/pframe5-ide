@@ -9,7 +9,7 @@ import PreviewPframe from './components/PreviewPframe'
 import DebugPframe from './components/DebugPframe'
 import Debugger from './components/Debug'
 import Console from '@zillding/react-console'
-
+import layout from '../data/layout.js'
 import debug from 'debug'
 const log = debug('app:log')
 
@@ -17,32 +17,7 @@ const PROJECT_DIRECTORY ='/Users/ada/github/pframe5-demo'
 global.PROJECT_DIRECTORY = PROJECT_DIRECTORY
 
 
-var config = {
-    content: [{
-        type: 'row',
-        content:[{
-            type: 'react-component',
-            component: 'editorComponent',
-            props: { file: `${PROJECT_DIRECTORY}/sketch.js` }
-        },{
-            type: 'column',
 
-            content:[{
-              type: 'react-component',
-              component: 'previewComponent',
-              title: 'Live Preview',
-              props: { }
-            },
-            {
-              type: 'react-component',
-              component: 'debugComponent',
-              tile: 'Debugger',
-              props: { }
-            }
-          ]
-          }]
-    }]
-};
 
 
 let gl;

@@ -51,6 +51,7 @@
     "react-atoms": "^2.0.11",
     "react-chatview": "^0.1.1",
     "react-codemirror": "^0.3.0",
+    "react-color": "^2.11.1",
     "react-dom": "^15.4.2",
     "react-electron-web-view": "^2.0.0",
     "react-electron-webview": "^2.0.2",

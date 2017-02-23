@@ -487,31 +487,6 @@ var log = debug('app:log');
 var PROJECT_DIRECTORY$1 = '/Users/ada/github/pframe5-demo';
 global.PROJECT_DIRECTORY = PROJECT_DIRECTORY$1;
 
-var config = {
-    content: [{
-        type: 'row',
-        content: [{
-            type: 'react-component',
-            component: 'editorComponent',
-            props: { file: PROJECT_DIRECTORY$1 + '/sketch.js' }
-        }, {
-            type: 'column',
-
-            content: [{
-                type: 'react-component',
-                component: 'previewComponent',
-                title: 'Live Preview',
-                props: {}
-            }, {
-                type: 'react-component',
-                component: 'debugComponent',
-                tile: 'Debugger',
-                props: {}
-            }]
-        }]
-    }]
-};
-
 var gl = void 0;
 
 gl = new GoldenLayout(config);
@@ -521,26 +496,26 @@ gl.registerComponent('previewComponent', PreviewPframe);
 gl.registerComponent('debugComponent', DebugPframe);
 //gl.registerComponent('fileTreeComponent', FileTree)
 gl.registerComponent('testComponent', function (container, componentState) {
-    container.getElement().html('<h2>' + componentState.label + '</h2>');
+  container.getElement().html('<h2>' + componentState.label + '</h2>');
 });
 
 gl.init();
 document.addEventListener('keypress', function (evt) {
-    log(evt);
+  log(evt);
 });
 
 window.refreshPreview = function () {
-    return gl.eventHub.emit('preview:refresh');
+  return gl.eventHub.emit('preview:refresh');
 };
 window.saveFile = function () {
-    return gl.eventHub.emit('editor:save-active-file');
+  return gl.eventHub.emit('editor:save-active-file');
 };
 window.log = function () {
-    for (var _len = arguments.length, msg = Array(_len), _key = 0; _key < _len; _key++) {
-        msg[_key] = arguments[_key];
-    }
+  for (var _len = arguments.length, msg = Array(_len), _key = 0; _key < _len; _key++) {
+    msg[_key] = arguments[_key];
+  }
 
-    return gl.eventHub.emit('debugger:log', { message: msg });
+  return gl.eventHub.emit('debugger:log', { message: msg });
 };
 //ReactDOM.render(<CommandPframe glEventHub={gl.eventHub}/>, document.getElementById('command-pframe'))
 
