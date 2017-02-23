@@ -5,6 +5,11 @@
 
 ![screenshot](docs/ss.png)
 
+## DISCLAIMER
+**pframe5-ide is not yet usable.**
+
+This project is in -very- early development. You probably shouldn't even be reading this.
+
 ## Installation
 Clone the repo, navigate to it in terminal, and then:
 `$ npm install`
