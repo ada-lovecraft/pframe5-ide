@@ -1,10 +1,11 @@
-export default layout = {
+import ENV from '../src/env'
+const layout = {
     content: [{
         type: 'row',
         content:[{
             type: 'react-component',
             component: 'editorComponent',
-            props: { file: `${PROJECT_DIRECTORY}/sketch.js` }
+            props: { file: `${ENV.PROJECT_DIRECTORY}/sketch.js` }
         },{
             type: 'column',
 
@@ -13,14 +14,15 @@ export default layout = {
               component: 'previewComponent',
               title: 'Live Preview',
               props: { }
-            },
-            {
-              type: 'react-component',
-              component: 'debugComponent',
-              tile: 'Debugger',
-              props: { }
             }
+            // {
+            //   type: 'react-component',
+            //   component: 'debugComponent',
+            //   tile: 'Debugger',
+            //   props: { }
+            // }
           ]
           }]
     }]
 }
+export default layout

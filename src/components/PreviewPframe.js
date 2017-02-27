@@ -6,6 +6,7 @@ import {filter as fuzz} from 'fuzzaldrin'
 import FileSelectorItem from './FileSelectorItem'
 import Webview from 'react-electron-web-view'
 import express from 'express'
+import ENV from '../env'
 
 const app = remote.app;
 
@@ -14,7 +15,7 @@ export default class PreviewPframe extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      baseDir: PROJECT_DIRECTORY,
+      baseDir: ENV.PROJECT_DIRECTORY,
       serverReady: false,
       serverPort: null
     }
@@ -24,7 +25,7 @@ export default class PreviewPframe extends Component {
   }
   componentWillMount() {
     const server = express()
-    server.use(express.static(PROJECT_DIRECTORY))
+    server.use(express.static(ENV.PROJECT_DIRECTORY))
     this.server = server.listen(this.port, () => {
       console.log('PreviewPframe:', 'server started')
       this.setState({serverReady: true})
@@ -48,7 +49,7 @@ export default class PreviewPframe extends Component {
   render() {
     const src = `http://localhost:${this.port}`
     return (
-      <div className="preview-pframe">
+      <div className="PreviewPframe">
         <Webview src={src}
           ref={(frame) => this.frame = frame}
           nodeintegration

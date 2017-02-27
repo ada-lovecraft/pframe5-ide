@@ -962,17 +962,17 @@ const keymap = [
   {
     "keys": "Tab",
     "cmd": "advanced-open-file:autocomplete",
-    "enabled": true
+    "enabled": false
   },
   {
     "keys": "Up",
     "cmd": "advanced-open-file:move-cursor-up",
-    "enabled": true
+    "enabled": false
   },
   {
     "keys": "Down",
     "cmd": "advanced-open-file:move-cursor-down",
-    "enabled": true
+    "enabled": false
   },
   {
     "keys": "Pageup",

@@ -17,6 +17,10 @@ var consoleBoard = require('console-board');
 var ReactDOM = _interopDefault(require('react-dom'));
 var _zillding_reactConsole = _interopDefault(require('@zillding/react-console'));
 
+// Simple wrapper exposing environment variables to rest of the code.
+
+var env = jetpack.cwd(__dirname).read('env.json', 'json');
+
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -152,7 +156,7 @@ var EditorPframe = function (_Component) {
     value: function saveFile() {
       var _this3 = this;
 
-      var project = jetpack.cwd(PROJECT_DIRECTORY);
+      var project = jetpack.cwd(env.PROJECT_DIRECTORY);
       project.writeAsync(this.state.file, this.state.code).then(function () {
         log$1('saved file');
         _this3.props.glEventHub.emit('preview:refresh');
@@ -266,7 +270,7 @@ var FileSelector = function (_Component) {
     value: function findFiles() {
       var _this2 = this;
 
-      var projectDir = jetpack.cwd(PROJECT_DIRECTORY);
+      var projectDir = jetpack.cwd(env.PROJECT_DIRECTORY);
       projectDir.findAsync('.', { matching: ['*.js', '*.html', '!node_modules/**'] }).then(function (files) {
         _this2.setState({ files: files });
       });
@@ -360,7 +364,7 @@ var PreviewPframe = function (_Component) {
     var _this = possibleConstructorReturn(this, (PreviewPframe.__proto__ || Object.getPrototypeOf(PreviewPframe)).call(this, props));
 
     _this.state = {
-      baseDir: PROJECT_DIRECTORY,
+      baseDir: env.PROJECT_DIRECTORY,
       serverReady: false,
       serverPort: null
     };
@@ -376,7 +380,7 @@ var PreviewPframe = function (_Component) {
       var _this2 = this;
 
       var server = express();
-      server.use(express.static(PROJECT_DIRECTORY));
+      server.use(express.static(env.PROJECT_DIRECTORY));
       this.server = server.listen(this.port, function () {
         console.log('PreviewPframe:', 'server started');
         _this2.setState({ serverReady: true });
@@ -411,7 +415,7 @@ var PreviewPframe = function (_Component) {
       var src = 'http://localhost:' + this.port;
       return React$1__default.createElement(
         'div',
-        { className: 'preview-pframe' },
+        { className: 'PreviewPframe' },
         React$1__default.createElement(Webview, { src: src,
           ref: function ref(frame) {
             return _this3.frame = frame;
@@ -478,18 +482,42 @@ Debugger.componentFactory = function (container, props) {
   ReactDOM.render(new Debugger(props), container);
 };
 
+var layout = {
+    content: [{
+        type: 'row',
+        content: [{
+            type: 'react-component',
+            component: 'editorComponent',
+            props: { file: env.PROJECT_DIRECTORY + '/sketch.js' }
+        }, {
+            type: 'column',
+
+            content: [{
+                type: 'react-component',
+                component: 'previewComponent',
+                title: 'Live Preview',
+                props: {}
+            }
+            // {
+            //   type: 'react-component',
+            //   component: 'debugComponent',
+            //   tile: 'Debugger',
+            //   props: { }
+            // }
+            ]
+        }]
+    }]
+};
+
 // Here is the starting point for your application code.
 // All stuff below is just to show you how it works. You can delete all of it.
 
 // Use new ES6 modules syntax for everything.
 var log = debug('app:log');
 
-var PROJECT_DIRECTORY$1 = '/Users/ada/github/pframe5-demo';
-global.PROJECT_DIRECTORY = PROJECT_DIRECTORY$1;
-
 var gl = void 0;
 
-gl = new GoldenLayout(config);
+gl = new GoldenLayout(layout);
 
 gl.registerComponent('editorComponent', EditorPframe);
 gl.registerComponent('previewComponent', PreviewPframe);

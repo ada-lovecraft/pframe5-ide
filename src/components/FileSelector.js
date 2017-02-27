@@ -3,6 +3,7 @@ import jetpack from 'fs-jetpack'
 import debug from 'debug'
 import {filter as fuzz} from 'fuzzaldrin'
 import FileSelectorItem from './FileSelectorItem'
+import ENV from '../env'
 const log = debug('FileTree:log')
 
 export default class FileSelector extends Component {
@@ -59,7 +60,7 @@ export default class FileSelector extends Component {
     }
   }
   findFiles() {
-    let projectDir = jetpack.cwd(PROJECT_DIRECTORY)
+    let projectDir = jetpack.cwd(ENV.PROJECT_DIRECTORY)
     projectDir.findAsync('.', { matching:['*.js','*.html','!node_modules/**']})
     .then(files => {
       this.setState({files})

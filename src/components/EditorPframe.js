@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import CodeMirror from 'react-codemirror';
+
 require('codemirror/mode/javascript/javascript')
 import debug from 'debug'
 import jetpack from 'fs-jetpack'
+import ENV from '../env'
 
 const log = console.log
 
@@ -55,7 +57,7 @@ export default class EditorPframe extends Component {
 
   }
   saveFile() {
-    const project = jetpack.cwd(PROJECT_DIRECTORY)
+    const project = jetpack.cwd(ENV.PROJECT_DIRECTORY)
     project.writeAsync(this.state.file, this.state.code)
     .then( () => {
       log('saved file')

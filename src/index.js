@@ -9,20 +9,13 @@ import PreviewPframe from './components/PreviewPframe'
 import DebugPframe from './components/DebugPframe'
 import Debugger from './components/Debug'
 import Console from '@zillding/react-console'
-import layout from '../data/layout.js'
+import layout from './layout.js'
 import debug from 'debug'
 const log = debug('app:log')
 
-const PROJECT_DIRECTORY ='/Users/ada/github/pframe5-demo'
-global.PROJECT_DIRECTORY = PROJECT_DIRECTORY
-
-
-
-
-
 let gl;
 
-gl = new GoldenLayout(config)
+gl = new GoldenLayout(layout)
 
 gl.registerComponent('editorComponent', EditorPframe)
 gl.registerComponent('previewComponent', PreviewPframe)

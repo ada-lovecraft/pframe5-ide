@@ -41,7 +41,9 @@ var registerKeycommands = () => {
   keymap.forEach(keycmd => {
     if(keycmd.enabled) {
       log('registering:', keycmd.keys, keycmd.keys)
-      const ret = electronLocalshortcut.register(mainWindow, keycmd.keys, () => { sendKeyCommand(keycmd.cmd)})
+      const ret = electronLocalshortcut.register(mainWindow, keycmd.keys, () => {
+        sendKeyCommand(keycmd.cmd)
+      })
       if (!ret) {
         console.log('registration failed')
       }
