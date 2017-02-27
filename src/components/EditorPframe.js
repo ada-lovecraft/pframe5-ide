@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CodeMirror from 'react-codemirror';
+import CommandRouter from '../routers/CommandRouter'
 
 require('codemirror/mode/javascript/javascript')
 import debug from 'debug'
@@ -25,10 +26,19 @@ export default class EditorPframe extends Component {
 
   componentWillMount() {
     this.props.glEventHub.on('editor:file-select', this.loadFile )
-    this.props.glEventHub.on('editor:save-active-file', this.saveFile.bind() )
+    if(CommandRouter.register('core:save', this.saveFile)) {
+      log('registered core:save')
+    } else {
+      log('failed to register core:save')
+    }
   }
   componentWillUnmount() {
     this.props.glEventHub.off( 'editor:file-select', this.setUser );
+    if(CommandRouter.deregister('core:save', this.saveFile)) {
+      log('deregistered core:save')
+    } else {
+      log('failed to deregister core:save')
+    }
   }
 
   componentDidMount() {
@@ -37,10 +47,11 @@ export default class EditorPframe extends Component {
 
   componentWillUpdate(nextProps, nextState) {
     log('next:', nextState, 'current:', this.state)
+    const tabTitle = nextState.file.match(/\S+\/(\S+)$/)[1]
     if(nextState.dirty) {
-      this.props.glContainer.setTitle(`${nextState.file} *`)
+      this.props.glContainer.setTitle(`${tabTitle} *`)
     } else {
-      this.props.glContainer.setTitle(nextState.file)
+      this.props.glContainer.setTitle(tabTitle)
     }
   }
 
@@ -51,18 +62,23 @@ export default class EditorPframe extends Component {
       jetpack.readAsync(file)
       .then(contents => {
         this.setState({code: contents, dirty: false, isUnsavedTitle: false})
-        this.props.glContainer.setTitle(file)
+        const tabTitle = file.match(/\S+\/(\S+)$/)[1]
+        log('tabTitle:', tabTitle)
+        this.props.glContainer.setTitle(tabTitle)
       })
     }
 
   }
   saveFile() {
-    const project = jetpack.cwd(ENV.PROJECT_DIRECTORY)
-    project.writeAsync(this.state.file, this.state.code)
-    .then( () => {
-      log('saved file')
-      this.props.glEventHub.emit('preview:refresh')
-    })
+    if(this.props.glContainer.tab.isActive) {
+      const project = jetpack.cwd(ENV.PROJECT_DIRECTORY)
+      project.writeAsync(this.state.file, this.state.code)
+      .then( () => {
+        log('saved file')
+        this.setState({dirty: false})
+        CommandRouter.trigger('preview:refresh')
+      })
+    }
   }
   handleCodeChange(c) {
     this.setState({ code: c});

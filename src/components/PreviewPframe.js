@@ -7,6 +7,7 @@ import FileSelectorItem from './FileSelectorItem'
 import Webview from 'react-electron-web-view'
 import express from 'express'
 import ENV from '../env'
+import CommandRouter from '../routers/CommandRouter'
 
 const app = remote.app;
 
@@ -30,22 +31,26 @@ export default class PreviewPframe extends Component {
       console.log('PreviewPframe:', 'server started')
       this.setState({serverReady: true})
     })
-    this.props.glEventHub.on('preview:refresh', () => this.refresh())
+    CommandRouter.register('preview:refresh', this.refresh)
     this.props.glContainer.setTitle('Live Preview')
+  }
+  componentWillUnmount() {
+    this.server.close()
+    CommandRouter.deregister('preview:refresh', this.refresh)
   }
 
   componentDidMount() {
     this.frame.view.addEventListener('dom-ready', () => {
       // this.frame.view.openDevTools()
     })
+
   }
+
   refresh() {
     this.frame.view.reload()
   }
 
-  componentWillUnmount() {
-    this.server.close()
-  }
+
   render() {
     const src = `http://localhost:${this.port}`
     return (

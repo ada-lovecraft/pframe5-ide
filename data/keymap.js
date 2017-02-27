@@ -212,7 +212,7 @@ const keymap = [
   {
     "keys": "CommandOrControl+,",
     "cmd": "application:show-settings",
-    "enabled": false
+    "enabled": true
   },
   {
     "keys": "Shift+CommandOrControl+N",

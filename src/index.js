@@ -10,7 +10,10 @@ import DebugPframe from './components/DebugPframe'
 import Debugger from './components/Debug'
 import Console from '@zillding/react-console'
 import layout from './layout.js'
+import CommandRouter from './routers/CommandRouter'
+import throttle from 'lodash.throttle'
 import debug from 'debug'
+
 const log = debug('app:log')
 
 let gl;
@@ -30,7 +33,10 @@ document.addEventListener('keypress', evt => {
   log(evt)
 })
 
-window.refreshPreview = () => gl.eventHub.emit('preview:refresh')
-window.saveFile = () => gl.eventHub.emit('editor:save-active-file')
-window.log = (...msg) => gl.eventHub.emit('debugger:log', {message: msg})
 //ReactDOM.render(<CommandPframe glEventHub={gl.eventHub}/>, document.getElementById('command-pframe'))
+window.addEventListener('resize', throttle(() => {
+  setTimeout(() => {
+    log('resized!')
+    CommandRouter.trigger('preview:refresh')
+}, 300)
+}), 500, {leading: false})

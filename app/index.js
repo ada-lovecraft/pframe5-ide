@@ -6,20 +6,17 @@ var GoldenLayout = _interopDefault(require('golden-layout'));
 var React$1 = require('react');
 var React$1__default = _interopDefault(React$1);
 var CodeMirror = _interopDefault(require('react-codemirror'));
+var electron = require('electron');
 var debug = _interopDefault(require('debug'));
 var jetpack = _interopDefault(require('fs-jetpack'));
 var fuzzaldrin = require('fuzzaldrin');
-require('electron');
 var Webview = _interopDefault(require('react-electron-web-view'));
 var express = _interopDefault(require('express'));
 require('react-object');
 var consoleBoard = require('console-board');
 var ReactDOM = _interopDefault(require('react-dom'));
 var _zillding_reactConsole = _interopDefault(require('@zillding/react-console'));
-
-// Simple wrapper exposing environment variables to rest of the code.
-
-var env = jetpack.cwd(__dirname).read('env.json', 'json');
+var throttle = _interopDefault(require('lodash.throttle'));
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -87,6 +84,86 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
+var log$2 = debug('CommandRouter:log');
+
+var CommandRouter = function () {
+  function CommandRouter() {
+    classCallCheck(this, CommandRouter);
+    this.trigger = this.trigger.bind(this);
+    this.hasCommand = this.hasCommand.bind(this);
+    this.handleCommand = this.handleCommand.bind(this);
+    this.register = this.register.bind(this);
+    this.deregister = this.deregister.bind(this);
+
+    this.listeners = {};
+    electron.ipcRenderer.on('command', this.handleCommand);
+  }
+
+  createClass(CommandRouter, [{
+    key: 'trigger',
+    value: function trigger(cmd) {
+      if (this.hasCommand(cmd)) {
+        log$2('triggering:', cmd);
+
+        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          args[_key - 1] = arguments[_key];
+        }
+
+        this.handleCommand.apply(this, [null, cmd].concat(args));
+      } else {
+        log$2('no callbacks registered for:', cmd);
+      }
+    }
+  }, {
+    key: 'hasCommand',
+    value: function hasCommand(cmd) {
+      return !!this.listeners[cmd];
+    }
+  }, {
+    key: 'handleCommand',
+    value: function handleCommand(evt, cmd) {
+      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+        args[_key2 - 2] = arguments[_key2];
+      }
+
+      log$2('received cmd:', cmd);
+      if (this.hasCommand(cmd)) {
+        this.listeners[cmd].forEach(function (cb) {
+          return cb.apply(undefined, args);
+        });
+      }
+    }
+  }, {
+    key: 'register',
+    value: function register(cmd, callback) {
+      if (!Array.isArray(this.listeners[cmd])) {
+        this.listeners[cmd] = [];
+      }
+      if (this.listeners[cmd].includes(callback)) {
+        return false;
+      }
+
+      this.listeners[cmd].push(callback);
+      log$2('registered:', cmd, 'for callback:', callback);
+      return true;
+    }
+  }, {
+    key: 'deregister',
+    value: function deregister(cmd, callback) {
+      debugger;
+      var index = this.listeners[cmd].indexOf(callback)(index >= 0 && this.listeners.splice(index, 1));
+      return this.listeners[cmd].indexOf(callback) === -1;
+    }
+  }]);
+  return CommandRouter;
+}();
+
+var CommandRouter$1 = new CommandRouter();
+
+// Simple wrapper exposing environment variables to rest of the code.
+
+var env = jetpack.cwd(__dirname).read('env.json', 'json');
+
 require('codemirror/mode/javascript/javascript');
 var log$1 = console.log;
 
@@ -97,6 +174,10 @@ var EditorPframe = function (_Component) {
     classCallCheck(this, EditorPframe);
 
     var _this = possibleConstructorReturn(this, (EditorPframe.__proto__ || Object.getPrototypeOf(EditorPframe)).call(this, props));
+
+    _this.loadFile = _this.loadFile.bind(_this);
+    _this.saveFile = _this.saveFile.bind(_this);
+    _this.handleCodeChange = _this.handleCodeChange.bind(_this);
 
     log$1('props:', props);
     _this.state = {
@@ -115,12 +196,21 @@ var EditorPframe = function (_Component) {
     key: 'componentWillMount',
     value: function componentWillMount() {
       this.props.glEventHub.on('editor:file-select', this.loadFile);
-      this.props.glEventHub.on('editor:save-active-file', this.saveFile.bind());
+      if (CommandRouter$1.register('core:save', this.saveFile)) {
+        log$1('registered core:save');
+      } else {
+        log$1('failed to register core:save');
+      }
     }
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       this.props.glEventHub.off('editor:file-select', this.setUser);
+      if (CommandRouter$1.deregister('core:save', this.saveFile)) {
+        log$1('deregistered core:save');
+      } else {
+        log$1('failed to deregister core:save');
+      }
     }
   }, {
     key: 'componentDidMount',
@@ -131,10 +221,11 @@ var EditorPframe = function (_Component) {
     key: 'componentWillUpdate',
     value: function componentWillUpdate(nextProps, nextState) {
       log$1('next:', nextState, 'current:', this.state);
+      var tabTitle = nextState.file.match(/\S+\/(\S+)$/)[1];
       if (nextState.dirty) {
-        this.props.glContainer.setTitle(nextState.file + ' *');
+        this.props.glContainer.setTitle(tabTitle + ' *');
       } else {
-        this.props.glContainer.setTitle(nextState.file);
+        this.props.glContainer.setTitle(tabTitle);
       }
     }
   }, {
@@ -147,7 +238,9 @@ var EditorPframe = function (_Component) {
       if (file && jetpack.exists(file)) {
         jetpack.readAsync(file).then(function (contents) {
           _this2.setState({ code: contents, dirty: false, isUnsavedTitle: false });
-          _this2.props.glContainer.setTitle(file);
+          var tabTitle = file.match(/\S+\/(\S+)$/)[1];
+          log$1('tabTitle:', tabTitle);
+          _this2.props.glContainer.setTitle(tabTitle);
         });
       }
     }
@@ -156,11 +249,14 @@ var EditorPframe = function (_Component) {
     value: function saveFile() {
       var _this3 = this;
 
-      var project = jetpack.cwd(env.PROJECT_DIRECTORY);
-      project.writeAsync(this.state.file, this.state.code).then(function () {
-        log$1('saved file');
-        _this3.props.glEventHub.emit('preview:refresh');
-      });
+      if (this.props.glContainer.tab.isActive) {
+        var project = jetpack.cwd(env.PROJECT_DIRECTORY);
+        project.writeAsync(this.state.file, this.state.code).then(function () {
+          log$1('saved file');
+          _this3.setState({ dirty: false });
+          CommandRouter$1.trigger('preview:refresh');
+        });
+      }
     }
   }, {
     key: 'handleCodeChange',
@@ -188,7 +284,7 @@ var EditorPframe = function (_Component) {
   return EditorPframe;
 }(React$1.Component);
 
-var log$4 = debug('FileSelectorItem:log');
+var log$5 = debug('FileSelectorItem:log');
 function FileSelectorItem(props) {
   var className = 'file-selector-item ' + (props.selected && 'selected');
   return React.createElement(
@@ -198,7 +294,7 @@ function FileSelectorItem(props) {
   );
 }
 
-var log$3 = debug('FileTree:log');
+var log$4 = debug('FileTree:log');
 
 var FileSelector = function (_Component) {
   inherits(FileSelector, _Component);
@@ -207,6 +303,10 @@ var FileSelector = function (_Component) {
     classCallCheck(this, FileSelector);
 
     var _this = possibleConstructorReturn(this, (FileSelector.__proto__ || Object.getPrototypeOf(FileSelector)).call(this, props));
+
+    _this.handleFilterChange = _this.handleFilterChange.bind(_this);
+    _this.handleKeyPress = _this.handleKeyPress.bind(_this);
+    _this.findFiles = _this.findFiles.bind(_this);
 
     _this.input = null;
     _this.state = {
@@ -236,17 +336,17 @@ var FileSelector = function (_Component) {
       evt.stopPropagation();
       var keys = [13,, 27, 40, 38];
       var keycode = evt.keyCode;
-      log$3('keycode:', keycode);
+      log$4('keycode:', keycode);
       if (keys.includes(keycode)) {
         evt.preventDefault();
         var listSize = this.state.fileList.length;
         var selectedItem = this.state.selectedItem;
         switch (keycode) {
           case 13:
-            log$3('selected file:', this.state.fileList[selectedItem]);
+            log$4('selected file:', this.state.fileList[selectedItem]);
             break;
           case 27:
-            log$3('closing command pframe');
+            log$4('closing command pframe');
             this.props.glEventHub.emit('file-selector:close');
             break;
           case 40:
@@ -309,7 +409,7 @@ var FileSelector = function (_Component) {
   return FileSelector;
 }(React$1.Component);
 
-var log$2 = 'CommandPframe:log';
+var log$3 = 'CommandPframe:log';
 
 var CommandPframe = function (_Component) {
   inherits(CommandPframe, _Component);
@@ -318,6 +418,8 @@ var CommandPframe = function (_Component) {
     classCallCheck(this, CommandPframe);
 
     var _this = possibleConstructorReturn(this, (CommandPframe.__proto__ || Object.getPrototypeOf(CommandPframe)).call(this, props));
+
+    _this.selectComponent = _this.selectComponent.bind(_this);
 
     _this.state = {
       open: false,
@@ -339,7 +441,7 @@ var CommandPframe = function (_Component) {
   }, {
     key: 'selectComponent',
     value: function selectComponent(evt) {
-      log$2('selecting component:', evt);
+      log$3('selecting component:', evt);
     }
   }, {
     key: 'render',
@@ -363,6 +465,8 @@ var PreviewPframe = function (_Component) {
 
     var _this = possibleConstructorReturn(this, (PreviewPframe.__proto__ || Object.getPrototypeOf(PreviewPframe)).call(this, props));
 
+    _this.refresh = _this.refresh.bind(_this);
+
     _this.state = {
       baseDir: env.PROJECT_DIRECTORY,
       serverReady: false,
@@ -385,10 +489,14 @@ var PreviewPframe = function (_Component) {
         console.log('PreviewPframe:', 'server started');
         _this2.setState({ serverReady: true });
       });
-      this.props.glEventHub.on('preview:refresh', function () {
-        return _this2.refresh();
-      });
+      CommandRouter$1.register('preview:refresh', this.refresh);
       this.props.glContainer.setTitle('Live Preview');
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.server.close();
+      CommandRouter$1.deregister('preview:refresh', this.refresh);
     }
   }, {
     key: 'componentDidMount',
@@ -401,11 +509,6 @@ var PreviewPframe = function (_Component) {
     key: 'refresh',
     value: function refresh() {
       this.frame.view.reload();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.server.close();
     }
   }, {
     key: 'render',
@@ -532,20 +635,13 @@ document.addEventListener('keypress', function (evt) {
   log(evt);
 });
 
-window.refreshPreview = function () {
-  return gl.eventHub.emit('preview:refresh');
-};
-window.saveFile = function () {
-  return gl.eventHub.emit('editor:save-active-file');
-};
-window.log = function () {
-  for (var _len = arguments.length, msg = Array(_len), _key = 0; _key < _len; _key++) {
-    msg[_key] = arguments[_key];
-  }
-
-  return gl.eventHub.emit('debugger:log', { message: msg });
-};
 //ReactDOM.render(<CommandPframe glEventHub={gl.eventHub}/>, document.getElementById('command-pframe'))
+window.addEventListener('resize', throttle(function () {
+  setTimeout(function () {
+    log('resized!');
+    CommandRouter$1.trigger('preview:refresh');
+  }, 300);
+}), 500, { leading: false });
 
 }());
 //# sourceMappingURL=index.js.map

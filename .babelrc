@@ -10,6 +10,7 @@
     "stage-0"
   ],
   "plugins": [
+    "autobind-class-methods",
     "external-helpers",
     "transform-decorators-legacy"
   ]
